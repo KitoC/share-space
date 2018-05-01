@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501115809) do
+ActiveRecord::Schema.define(version: 20180501115308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,15 +29,6 @@ ActiveRecord::Schema.define(version: 20180501115809) do
 
   create_table "languages", force: :cascade do |t|
     t.string "language"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "location_addresses", force: :cascade do |t|
-    t.string "city_suburb"
-    t.string "state"
-    t.string "country"
-    t.integer "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,30 +79,11 @@ ActiveRecord::Schema.define(version: 20180501115809) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.date "dob"
-    t.integer "phone_number"
-    t.string "street_address"
-    t.text "description"
-    t.integer "overall_rating"
-    t.string "emergency_contact_name"
-    t.integer "emergency_contact_number"
-    t.string "emergency_contact_relationship"
-    t.bigint "gender_id"
-    t.bigint "occupation_id"
-    t.bigint "location_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["gender_id"], name: "index_users_on_gender_id"
-    t.index ["location_address_id"], name: "index_users_on_location_address_id"
-    t.index ["occupation_id"], name: "index_users_on_occupation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "occupations", "industries"
   add_foreign_key "user_photos", "users"
   add_foreign_key "user_reviews", "users"
-  add_foreign_key "users", "genders"
-  add_foreign_key "users", "location_addresses"
-  add_foreign_key "users", "occupations"
 end

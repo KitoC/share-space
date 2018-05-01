@@ -4,5 +4,4 @@
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#
-LocationAddress.create(city_suburb: nil, state: nil, country: nil, postcode: nil)
+#   Character.create(name: 'Luke', movie: movies.first)
