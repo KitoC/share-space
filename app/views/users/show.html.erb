@@ -1,0 +1,19 @@
+
+<div class = "profiles">
+<h1><%= @user.first_name %> <%= @user.last_name %><h1>
+<h2>Contact Info</h2>
+
+<ul, list-style: "none">
+<li>Email: <%= @user.email %></li>
+<li>DoB: <%= @user.dob %></li>
+<li>Ph: <%= @user.phone_number %></li>
+<li>Description: <%= @user.description %></li>
+<li>Rating: <%= @user.overall_rating %></li>
+<li>Address: <%= @user.street_address %></li>
+
+</ul>
+
+
+
+<%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" if current_user ==  @user %>
+</div>
