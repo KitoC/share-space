@@ -69,6 +69,6 @@ class CollabSpaceListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collab_space_listing_params
-      params.require(:collab_space_listing).permit(:user_id, :name, :brief_description, :description, :rules, :surrounding_area_description, :overall_rating, :cost_per_day, :address_id)
+      params.require(:collab_space_listing).permit(:user_id, :name, :brief_description, :description, :rules, :surrounding_area_description, :overall_rating, :cost_per_day, address_attributes:[:unit_num, :street_num, :street_name, :street_type, :city_suburb, :state, :postcode, :country])
     end
 end
