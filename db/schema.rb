@@ -10,13 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501115308) do
+ActiveRecord::Schema.define(version: 20180502002312) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "genders", force: :cascade do |t|
-    t.string "gender"
+  create_table "addresses", force: :cascade do |t|
+    t.integer "street_num"
+    t.integer "unit_num"
+    t.string "street_name"
+    t.string "street_type"
+    t.string "address_type"
+    t.string "address_identifier"
+    t.string "city_suburb"
+    t.string "state"
+    t.string "postcode"
+    t.string "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -79,11 +88,28 @@ ActiveRecord::Schema.define(version: 20180501115308) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.date "dob"
+    t.integer "phone_number"
+    t.string "street_address"
+    t.text "description"
+    t.integer "overall_rating"
+    t.string "emergency_contact_name"
+    t.integer "emergency_contact_number"
+    t.string "emergency_contact_relationship"
+    t.string "gender"
+    t.bigint "occupation_id"
+    t.bigint "address_id"
+    t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["occupation_id"], name: "index_users_on_occupation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "occupations", "industries"
   add_foreign_key "user_photos", "users"
   add_foreign_key "user_reviews", "users"
+  add_foreign_key "users", "addresses"
+  add_foreign_key "users", "occupations"
 end
