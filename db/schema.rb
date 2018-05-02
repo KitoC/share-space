@@ -26,10 +26,13 @@ ActiveRecord::Schema.define(version: 20180502054403) do
     t.string "state"
     t.string "postcode"
     t.string "country"
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
   end
 
   create_table "collab_space_listings", force: :cascade do |t|
@@ -41,10 +44,8 @@ ActiveRecord::Schema.define(version: 20180502054403) do
     t.text "surrounding_area_description"
     t.float "overall_rating"
     t.float "cost_per_day"
-    t.bigint "address_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_collab_space_listings_on_address_id"
     t.index ["user_id"], name: "index_collab_space_listings_on_user_id"
   end
 
@@ -118,18 +119,14 @@ ActiveRecord::Schema.define(version: 20180502054403) do
     t.string "emergency_contact_relationship"
     t.string "gender"
     t.bigint "occupation_id"
-    t.bigint "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["occupation_id"], name: "index_users_on_occupation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "collab_space_listings", "addresses"
   add_foreign_key "collab_space_listings", "users"
   add_foreign_key "occupations", "industries"
   add_foreign_key "user_photos", "users"
   add_foreign_key "user_reviews", "users"
-  add_foreign_key "users", "addresses"
   add_foreign_key "users", "occupations"
 end

@@ -9,7 +9,7 @@ class CreateCollabSpaceListings < ActiveRecord::Migration[5.1]
       t.text :surrounding_area_description
       t.float :overall_rating
       t.float :cost_per_day
-      t.references :address, foreign_key: true
+      
 
       t.timestamps
     end

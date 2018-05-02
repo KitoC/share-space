@@ -1,4 +1,4 @@
 class CollabSpaceListing < ApplicationRecord
   belongs_to :user
-  belongs_to :address
+  has_one :address, as: :addressable
 end

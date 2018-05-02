@@ -12,6 +12,6 @@ class AddColumnsToUser < ActiveRecord::Migration[5.1]
     add_column :users, :emergency_contact_relationship, :string
     add_column :users, :gender, :string
     add_reference :users, :occupation, foreign_key: true
-    add_reference :users, :address, foreign_key: true
+    
   end
 end
