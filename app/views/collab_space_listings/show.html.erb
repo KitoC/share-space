@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @collab_space_listing.user %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @collab_space_listing.name %>
+</p>
+
+<p>
+  <strong>Brief description:</strong>
+  <%= @collab_space_listing.brief_description %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @collab_space_listing.description %>
+</p>
+
+<p>
+  <strong>Rules:</strong>
+  <%= @collab_space_listing.rules %>
+</p>
+
+<p>
+  <strong>Surrounding area description:</strong>
+  <%= @collab_space_listing.surrounding_area_description %>
+</p>
+
+<p>
+  <strong>Overall rating:</strong>
+  <%= @collab_space_listing.overall_rating %>
+</p>
+
+<p>
+  <strong>Cost per day:</strong>
+  <%= @collab_space_listing.cost_per_day %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @collab_space_listing.address %>
+</p>
+
+<%= link_to 'Edit', edit_collab_space_listing_path(@collab_space_listing) %> |
+<%= link_to 'Back', collab_space_listings_path %>

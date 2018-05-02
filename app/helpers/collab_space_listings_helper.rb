@@ -1,0 +1,2 @@
+module CollabSpaceListingsHelper
+end

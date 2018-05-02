@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name: MyString
+  brief_description: MyString
+  description: MyText
+  rules: MyText
+  surrounding_area_description: MyText
+  overall_rating: 1.5
+  cost_per_day: 1.5
+  address: one
+
+two:
+  user: two
+  name: MyString
+  brief_description: MyString
+  description: MyText
+  rules: MyText
+  surrounding_area_description: MyText
+  overall_rating: 1.5
+  cost_per_day: 1.5
+  address: two

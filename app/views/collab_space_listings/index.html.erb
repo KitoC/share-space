@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Collab Space Listings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Brief description</th>
+      <th>Description</th>
+      <th>Rules</th>
+      <th>Surrounding area description</th>
+      <th>Overall rating</th>
+      <th>Cost per day</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @collab_space_listings.each do |collab_space_listing| %>
+      <tr>
+        <td><%= collab_space_listing.user %></td>
+        <td><%= collab_space_listing.name %></td>
+        <td><%= collab_space_listing.brief_description %></td>
+        <td><%= collab_space_listing.description %></td>
+        <td><%= collab_space_listing.rules %></td>
+        <td><%= collab_space_listing.surrounding_area_description %></td>
+        <td><%= collab_space_listing.overall_rating %></td>
+        <td><%= collab_space_listing.cost_per_day %></td>
+        <td><%= collab_space_listing.address %></td>
+        <td><%= link_to 'Show', collab_space_listing %></td>
+        <td><%= link_to 'Edit', edit_collab_space_listing_path(collab_space_listing) %></td>
+        <td><%= link_to 'Destroy', collab_space_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Collab Space Listing', new_collab_space_listing_path %>
