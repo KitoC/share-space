@@ -51,3 +51,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-05-01 21:41:02 +1000 by Kitoc:
 gem "devise", "~> 4.4"
+
+# Added at 2018-05-02 14:25:51 +1000 by Kitoc:
+gem "geocoder", "~> 1.4"
