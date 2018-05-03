@@ -121,6 +121,7 @@ Configuration - you will not have an ENV file as this has been ignored through G
  -----------------------
  ## 4. User Stories
  ![User stories for the whole application.](DOCS/User_stories/User_stories.png)
+ ![User stories for the whole application.](DOCS/User_stories/User_stories2.png)
 
  -----------------------
 

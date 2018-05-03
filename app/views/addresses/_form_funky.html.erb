@@ -1,0 +1,56 @@
+<%= form_for [addressable, Address.new] do |form| %>
+
+<div class="field">
+  <%= form.label :street_num %>
+  <%= form.text_field :street_num, id: :address_street_num %>
+</div>
+
+<div class="field">
+  <%= form.label :unit_num %>
+  <%= form.text_field :unit_num, id: :address_unit_num %>
+</div>
+
+<div class="field">
+  <%= form.label :street_name %>
+  <%= form.text_field :street_name, id: :address_street_name %>
+</div>
+
+<div class="field">
+  <%= form.label :street_type %>
+  <%= form.text_field :street_type, id: :address_street_type %>
+</div>
+
+<div class="field">
+  <%= form.label :address_type %>
+  <%= form.text_field :address_type, id: :address_address_type %>
+</div>
+
+<div class="field">
+  <%= form.label :address_identifier %>
+  <%= form.text_field :address_identifier, id: :address_address_identifier %>
+</div>
+
+<div class="field">
+  <%= form.label :city_suburb %>
+  <%= form.text_field :city_suburb, id: :address_city_suburb %>
+</div>
+
+<div class="field">
+  <%= form.label :state %>
+  <%= form.text_field :state, id: :address_state %>
+</div>
+
+<div class="field">
+  <%= form.label :postcode %>
+  <%= form.text_field :postcode, id: :address_postcode %>
+</div>
+
+<div class="field">
+  <%= form.label :country %>
+  <%= form.text_field :country, id: :address_country %>
+</div>
+
+<div class="actions">
+  <%= form.submit %>
+</div>
+<% end %>

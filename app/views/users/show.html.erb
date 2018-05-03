@@ -9,11 +9,11 @@
 <li>Ph: <%= @user.phone_number %></li>
 <li>Description: <%= @user.description %></li>
 <li>Rating: <%= @user.overall_rating %></li>
-<li>Address: <%= @user.street_address %></li>
+<li>Address: <%= @user.address.full_street_address %></li>
 
 </ul>
 
 
-
+<%= link_to 'Edit Address', edit_address_path(@user.address) %>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" if current_user ==  @user %>
 </div>
