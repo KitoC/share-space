@@ -5,6 +5,7 @@ class CollabSpaceListingsController < ApplicationController
   # GET /collab_space_listings.json
   def index
 
+
     if params[:address] != nil
       @addresses = Address.near(params[:address], 50, order: 'distance').where(addressable_type: "CollabSpaceListing")
       @current_loc = params[:address]
@@ -38,7 +39,7 @@ class CollabSpaceListingsController < ApplicationController
 
     respond_to do |format|
       if @collab_space_listing.save
-        format.html { redirect_to edit_address_path(@collab_space_listing.address), notice: 'Collab space listing was successfully created.' }
+        format.html { redirect_to new_photo_path, notice: 'Collab space listing was successfully created.' }
         format.json { render :show, status: :created, location: @collab_space_listing }
       else
         format.html { render :new }

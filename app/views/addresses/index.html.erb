@@ -33,13 +33,7 @@
         <td><%= address.state %></td>
         <td><%=  %></td>
         <td><%= "#{address.postcode}, #{address.country}#{address.postcode}, #{address.country}" %></td>
-        <td><iframe
-          width="250"
-          height="250"
-          frameborder="0" style="border:0"
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
-            &q=<%= address.full_street_address %>" allowfullscreen>
-        </iframe></td>
+        
         <td><%= link_to 'Show', address %></td>
         <td><%= link_to 'Edit', edit_address_path(address) %></td>
         <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>

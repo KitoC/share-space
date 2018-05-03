@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180502054403) do
+ActiveRecord::Schema.define(version: 20180503064510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,15 @@ ActiveRecord::Schema.define(version: 20180502054403) do
     t.float "latitude"
     t.float "longitude"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id"
+  end
+
+  create_table "albums", force: :cascade do |t|
+    t.string "name"
+    t.string "albumable_type"
+    t.bigint "albumable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["albumable_type", "albumable_id"], name: "index_albums_on_albumable_type_and_albumable_id"
   end
 
   create_table "collab_space_listings", force: :cascade do |t|
@@ -69,20 +78,21 @@ ActiveRecord::Schema.define(version: 20180502054403) do
     t.index ["industry_id"], name: "index_occupations_on_industry_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string "image"
+    t.string "caption"
+    t.boolean "profile"
+    t.string "photoable_type"
+    t.bigint "photoable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["photoable_type", "photoable_id"], name: "index_photos_on_photoable_type_and_photoable_id"
+  end
+
   create_table "schools", force: :cascade do |t|
     t.string "school"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "user_photos", force: :cascade do |t|
-    t.bigint "user_id"
-    t.string "img_url"
-    t.text "description"
-    t.integer "position"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_photos_on_user_id"
   end
 
   create_table "user_reviews", force: :cascade do |t|
@@ -119,6 +129,7 @@ ActiveRecord::Schema.define(version: 20180502054403) do
     t.string "emergency_contact_relationship"
     t.string "gender"
     t.bigint "occupation_id"
+    t.integer "profile_photo"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["occupation_id"], name: "index_users_on_occupation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -126,7 +137,6 @@ ActiveRecord::Schema.define(version: 20180502054403) do
 
   add_foreign_key "collab_space_listings", "users"
   add_foreign_key "occupations", "industries"
-  add_foreign_key "user_photos", "users"
   add_foreign_key "user_reviews", "users"
   add_foreign_key "users", "occupations"
 end

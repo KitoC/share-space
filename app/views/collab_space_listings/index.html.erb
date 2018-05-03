@@ -29,23 +29,28 @@
      function initMap() {
        map = new google.maps.Map(document.getElementById('map'), {
          zoom: 16,
-         center: new google.maps.LatLng(<%= @addresses.first.latitude %>, <%= @addresses.first.longitude %>),
+         center: new google.maps.LatLng(<%= CollabSpaceListing.first.address.latitude %>, <%= CollabSpaceListing.first.address.longitude %>),
          mapTypeId: 'roadmap'
        });
 // THIS SECTION IS FOR ICONS/Images
        var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-       var image =  {
-                    url: 'http://res.cloudinary.com/cloudkito/image/upload/v1525313492/smile.png',
-                    scaledSize : new google.maps.Size(35, 35),
-                };
+
 
 // THIS SECTION IS FOR all the iterated locations
 
        var features = [
          <% @addresses.each do |address| %>
+
+           <% if address.longitude != nil %>
          {
-           position: new google.maps.LatLng(<%= address.latitude %>, <%= address.longitude %>)
+           position: new google.maps.LatLng(<%= address.latitude %>, <%= address.longitude %>),
+           <% if address.addressable.photos.first != nil %>
+           url: '<% address.addressable.photos.first.image_url %>',
+           scaledSize : new google.maps.Size(35, 35),
+           <% end %>
+
          },
+         <% end %>
          <% end %>
        ];
 
@@ -53,7 +58,9 @@
        features.forEach(function(feature) {
          var marker = new google.maps.Marker({
            position: feature.position,
-           icon: image,
+           icon: {url: feature.url,
+                  scaledSize : new google.maps.Size(35, 35),
+                    },
            map: map
          });
        });

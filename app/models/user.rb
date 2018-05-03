@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :address, as: :addressable
-
+  has_many :photos, as: :photoable
+  has_many :collab_space_listings
   after_create :tasks
 
   private

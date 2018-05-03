@@ -54,3 +54,9 @@ gem "devise", "~> 4.4"
 
 # Added at 2018-05-02 14:25:51 +1000 by Kitoc:
 gem "geocoder", "~> 1.4"
+
+# Added at 2018-05-03 14:01:46 +1000 by Kitoc:
+gem "carrierwave", "~> 1.2"
+
+# Added at 2018-05-03 14:02:13 +1000 by Kitoc:
+gem "cloudinary", "~> 1.9"

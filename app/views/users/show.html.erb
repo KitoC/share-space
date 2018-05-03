@@ -1,9 +1,9 @@
 
 <div class = "profiles">
 <h1><%= @user.first_name %> <%= @user.last_name %><h1>
-<h2>Contact Info</h2>
-
-<ul, list-style: "none">
+<h2>Profile</h2>
+<div><%= image_tag Photo.find(@user.profile_photo).image_url(:thumb) if @user.profile_photo != nil %></div>
+<ul list-style: "none">
 <li>Email: <%= @user.email %></li>
 <li>DoB: <%= @user.dob %></li>
 <li>Ph: <%= @user.phone_number %></li>
@@ -13,7 +13,7 @@
 
 </ul>
 
-
+<%= render 'photos/form', photo: Photo.new, photoable: @user %>
 <%= link_to 'Edit Address', edit_address_path(@user.address) %>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" if current_user ==  @user %>
 </div>

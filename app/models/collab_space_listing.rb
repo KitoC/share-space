@@ -2,7 +2,7 @@ class CollabSpaceListing < ApplicationRecord
 
   belongs_to :user
   has_one :address, as: :addressable
-
+  has_many :photos, as: :photoable
   after_create :tasks
 
   private

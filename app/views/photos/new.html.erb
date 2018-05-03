@@ -1,0 +1,5 @@
+<h1>New Photo</h1>
+
+<%= render 'form', photo: @photo, photoable: current_user.collab_space_listings.last %>
+
+<%= link_to 'Back', photos_path %>

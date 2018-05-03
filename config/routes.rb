@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :photos
+  resources :albums
   resources :collab_space_listings
   resources :addresses
   devise_for :users

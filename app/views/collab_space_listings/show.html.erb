@@ -44,7 +44,13 @@
   <strong>Address:</strong>
   <%= @collab_space_listing.address.full_street_address %>
 </p>
-
+<td><iframe
+  width="250"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
+    &q=<%= @collab_space_listing.address.full_street_address %>" allowfullscreen>
+</iframe></td>
 <%= link_to 'Edit Address', edit_address_path(@collab_space_listing.address) %>
 <%= link_to 'Edit', edit_collab_space_listing_path(@collab_space_listing) %> |
 <%= link_to 'Back', collab_space_listings_path %>
