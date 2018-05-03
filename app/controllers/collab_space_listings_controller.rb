@@ -4,7 +4,17 @@ class CollabSpaceListingsController < ApplicationController
   # GET /collab_space_listings
   # GET /collab_space_listings.json
   def index
-    @collab_space_listings = CollabSpaceListing.all
+
+    if params[:address] != nil
+      @addresses = Address.near(params[:address], 50, order: 'distance').where(addressable_type: "CollabSpaceListing")
+      @current_loc = params[:address]
+      @nearest_me = @addresses[0].addressable
+    else
+      @addresses = Address.where(addressable_type: "CollabSpaceListing")
+    end
+    rescue
+      flash[:notice] = "Sorry couldn't find a store near you."
+      redirect_to(:action => 'index')
   end
 
   # GET /collab_space_listings/1
@@ -28,7 +38,7 @@ class CollabSpaceListingsController < ApplicationController
 
     respond_to do |format|
       if @collab_space_listing.save
-        format.html { redirect_to @collab_space_listing, notice: 'Collab space listing was successfully created.' }
+        format.html { redirect_to edit_address_path(@collab_space_listing.address), notice: 'Collab space listing was successfully created.' }
         format.json { render :show, status: :created, location: @collab_space_listing }
       else
         format.html { render :new }

@@ -1,43 +1,67 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Collab Space Listings</h1>
+<%= render 'search_address' %>
+<p style="background:red;"><%= notice %></p>
+<% if @nearest_me %>
+<p> Your closest listing is <%= link_to @nearest_me.name, collab_space_listings_url(@nearest_me.id) %> in <%= @nearest_me.address.city_suburb %></p>
+<% end %>
+<div class="listing_layout">
+<div class="listings">
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Brief description</th>
-      <th>Description</th>
-      <th>Rules</th>
-      <th>Surrounding area description</th>
-      <th>Overall rating</th>
-      <th>Cost per day</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @collab_space_listings.each do |collab_space_listing| %>
-      <tr>
-        <td><%= collab_space_listing.user %></td>
-        <td><%= collab_space_listing.name %></td>
-        <td><%= collab_space_listing.brief_description %></td>
-        <td><%= collab_space_listing.description %></td>
-        <td><%= collab_space_listing.rules %></td>
-        <td><%= collab_space_listing.surrounding_area_description %></td>
-        <td><%= collab_space_listing.overall_rating %></td>
-        <td><%= collab_space_listing.cost_per_day %></td>
-        <td><%= collab_space_listing.address %></td>
-        <td><%= link_to 'Show', collab_space_listing %></td>
-        <td><%= link_to 'Edit', edit_collab_space_listing_path(collab_space_listing) %></td>
-        <td><%= link_to 'Destroy', collab_space_listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <% @addresses.each do |address| listing = address.addressable %>
+  <div class="listing">
+    <h5 style="margin-bottom: 0;"><%= link_to listing.name, listing %></h5>
+    <p style="margin-top: 0;"><%=  listing.address.full_street_address %></p>
+    <%= link_to 'Edit', edit_collab_space_listing_path(listing) %>
+    <%= link_to 'Edit Address', edit_address_path(listing.address) %>
+    <%= link_to 'Show', listing %>
+  </div>
 
+  <% end %>
+</div>
+<div id="map"></div>
+
+</div>
+   <script>
+     var map;
+     function initMap() {
+       map = new google.maps.Map(document.getElementById('map'), {
+         zoom: 16,
+         center: new google.maps.LatLng(<%= @addresses.first.latitude %>, <%= @addresses.first.longitude %>),
+         mapTypeId: 'roadmap'
+       });
+// THIS SECTION IS FOR ICONS/Images
+       var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+       var image =  {
+                    url: 'http://res.cloudinary.com/cloudkito/image/upload/v1525313492/smile.png',
+                    scaledSize : new google.maps.Size(35, 35),
+                };
+
+// THIS SECTION IS FOR all the iterated locations
+
+       var features = [
+         <% @addresses.each do |address| %>
+         {
+           position: new google.maps.LatLng(<%= address.latitude %>, <%= address.longitude %>)
+         },
+         <% end %>
+       ];
+
+       // Create markers.
+       features.forEach(function(feature) {
+         var marker = new google.maps.Marker({
+           position: feature.position,
+           icon: image,
+           map: map
+         });
+       });
+     }
+   </script>
+   <script async defer
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_u77wbZStldL82_gGDInvPlanmANOyl8&callback=initMap">
+   </script>
 <br>
 
 <%= link_to 'New Collab Space Listing', new_collab_space_listing_path %>

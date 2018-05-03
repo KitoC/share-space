@@ -1,0 +1,13 @@
+<div style="margin-left: 30px;">
+
+  <h1>Collab Space Listings</h1>
+  <% @collab_space_listings.each do |listing| %>
+
+
+  <h4 style=""><%= link_to listing.name, listing %></h4>
+  <p style=""><%=  listing.address.full_street_address%></p>
+
+
+  <% end %>
+
+</div>

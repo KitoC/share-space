@@ -42,8 +42,13 @@ class AddressesController < ApplicationController
   def update
     respond_to do |format|
       if @address.update(address_params)
-        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
-        format.json { render :show, status: :ok, location: @address }
+        if @address.addressable_type == "CollabSpaceListing"
+          format.html { redirect_to collab_space_listings_path, notice: 'Address was successfully updated.' }
+          format.json { render :show, status: :ok, location: @address }
+        else
+          format.html { redirect_to user_path, notice: 'Address was successfully updated.' }
+          format.json { render :show, status: :ok, location: @address }
+        end
       else
         format.html { render :edit }
         format.json { render json: @address.errors, status: :unprocessable_entity }
