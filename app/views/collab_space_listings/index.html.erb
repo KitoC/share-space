@@ -45,7 +45,7 @@
          {
            position: new google.maps.LatLng(<%= address.latitude %>, <%= address.longitude %>),
            <% if address.addressable.photos.first != nil %>
-           url: '<% address.addressable.photos.first.image_url %>',
+           url: '<%= address.addressable.photos.first.image_url %>',
            scaledSize : new google.maps.Size(35, 35),
            <% end %>
 
