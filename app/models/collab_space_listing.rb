@@ -8,6 +8,7 @@ class CollabSpaceListing < ApplicationRecord
   private
   def tasks
     set_address
+    UserNotifierMailer.send_listing_creation_email(self.user).deliver
   end
 
   def set_address
