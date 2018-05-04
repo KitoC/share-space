@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one :address, as: :addressable
   has_many :photos, as: :photoable
   has_many :sharespace_venues
+  has_many :bookings
   after_create :tasks
 
   private

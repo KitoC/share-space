@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :albums
   resources :sharespace_venues
   resources :addresses
+  resources :charges
   devise_for :users
   resources :users
   post '/search', to: 'sharespace_venues#index'

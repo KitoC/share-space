@@ -5,11 +5,11 @@ one:
   date_to: 2018-05-04
   total_days: 1
   user: one
-  share_space: one
+  sharespace: one
 
 two:
   date_from: 2018-05-04
   date_to: 2018-05-04
   total_days: 1
   user: two
-  share_space: two
+  sharespace: two

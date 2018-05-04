@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 20180504000206) do
     t.boolean "paid"
     t.string "description"
     t.bigint "user_id"
-    t.bigint "share_space_id"
+    t.bigint "sharespace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["share_space_id"], name: "index_bookings_on_share_space_id"
+    t.index ["sharespace_id"], name: "index_bookings_on_sharespace_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 

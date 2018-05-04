@@ -20,6 +20,7 @@
   <%= @sharespace.sharespace_venue %>
 </p>
 
-<%= render 'photos/form', photo: Photo.new, photoable: @sharespace %>
+<%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace %>
+<%= link_to 'Make a Booking', new_booking_path(params:{sharespace_id: @sharespace.id}) %>
 <%= link_to 'Edit', edit_sharespace_path(@sharespace) %> |
 <%= link_to 'Back', sharespaces_path %>

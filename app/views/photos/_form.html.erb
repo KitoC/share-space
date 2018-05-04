@@ -23,11 +23,11 @@
 
   <div class="field">
     <%= form.label :photoable_id %>
-    <%= form.hidden_field :photoable_id, value: photoable.id %>
+    <%= form.hidden_field :photoable_id, value: photoable_object.id %>
   </div>
   <div class="field">
     <%= form.label :photoable_type %>
-    <%= form.hidden_field :photoable_type, value: photoable.class.name %>
+    <%= form.hidden_field :photoable_type, value: photoable_object.class.name %>
   </div>
 
   <div class="actions">

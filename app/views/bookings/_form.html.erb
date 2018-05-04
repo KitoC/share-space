@@ -28,12 +28,12 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :booking_user_id %>
+    <%= form.text_field :user_id, value: current_user.id, id: :booking_user_id %>
   </div>
 
   <div class="field">
-    <%= form.label :share_space_id %>
-    <%= form.text_field :share_space_id, id: :booking_share_space_id %>
+    <%= form.label :sharespace_id %>
+    <%= form.text_field :sharespace_id, value: params[:sharespace_id], id: :booking_sharespace_id %>
   </div>
 
   <div class="actions">

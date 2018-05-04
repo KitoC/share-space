@@ -60,3 +60,6 @@ gem "carrierwave", "~> 1.2"
 
 # Added at 2018-05-03 14:02:13 +1000 by Kitoc:
 gem "cloudinary", "~> 1.9"
+
+# Added at 2018-05-04 20:03:55 +1000 by Kitoc:
+gem "stripe", "~> 3.13"
