@@ -1,0 +1,50 @@
+<%= form_with(model: sharespace_venue, local: true) do |form| %>
+  <% if sharespace_venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sharespace_venue.errors.count, "error") %> prohibited this sharespace_venue from being saved:</h2>
+
+      <ul>
+      <% sharespace_venue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= "#{current_user.first_name} #{current_user.last_name}" %>
+    <%= form.hidden_field :user_id, value: current_user.id, id: :sharespace_venue_user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :sharespace_venue_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :brief_description %>
+    <%= form.text_field :brief_description, id: :sharespace_venue_brief_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :sharespace_venue_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rules %>
+    <%= form.text_area :rules, id: :sharespace_venue_rules %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surrounding_area_description %>
+    <%= form.text_area :surrounding_area_description, id: :sharespace_venue_surrounding_area_description %>
+  </div>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

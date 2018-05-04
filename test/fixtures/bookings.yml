@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date_from: 2018-05-04
+  date_to: 2018-05-04
+  total_days: 1
+  user: one
+  share_space: one
+
+two:
+  date_from: 2018-05-04
+  date_to: 2018-05-04
+  total_days: 1
+  user: two
+  share_space: two

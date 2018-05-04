@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sharespaces</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Cost</th>
+      <th>Share space listing</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sharespaces.each do |sharespace| %>
+      <tr>
+        <td><%= sharespace.space_type %></td>
+        <td><%= sharespace.description %></td>
+        <td><%= sharespace.cost %></td>
+        <td><%= sharespace.sharespace_venue %></td>
+        <td><%= link_to 'Show', sharespace %></td>
+        <td><%= link_to 'Edit', edit_sharespace_path(sharespace) %></td>
+        <td><%= link_to 'Destroy', sharespace, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sharespace', new_sharespace_path %>

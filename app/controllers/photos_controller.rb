@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
 
     respond_to do |format|
       if @photo.save
-        format.html { redirect_to edit_address_path(@photo.photoable), notice: 'Photo was successfully created.' }
+        format.html { redirect_to sharespace_venues_path, notice: 'Photo was successfully created.' }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
@@ -69,6 +69,6 @@ class PhotosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
-      params.require(:photo).permit(:image, :caption, :profile, :photoable_type, :photoable_id)
+      params.require(:photo).permit(:image, :caption, :photoable_type, :photoable_id)
     end
 end

@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :address, as: :addressable
   has_many :photos, as: :photoable
-  has_many :collab_space_listings
+  has_many :sharespace_venues
   after_create :tasks
 
   private

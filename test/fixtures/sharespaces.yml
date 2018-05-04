@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  description: MyText
+  cost: 1.5
+  sharespace_venue: one
+
+two:
+  type: 
+  description: MyText
+  cost: 1.5
+  sharespace_venue: two

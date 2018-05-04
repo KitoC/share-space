@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @booking.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @booking.date_to %>
+</p>
+
+<p>
+  <strong>Total days:</strong>
+  <%= @booking.total_days %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @booking.user %>
+</p>
+
+<p>
+  <strong>Share space:</strong>
+  <%= @booking.share_space %>
+</p>
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Back', bookings_path %>

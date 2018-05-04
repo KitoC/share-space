@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @sharespace.space_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sharespace.description %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @sharespace.cost %>
+</p>
+
+<p>
+  <strong>Share space listing:</strong>
+  <%= @sharespace.sharespace_venue %>
+</p>
+
+<%= link_to 'Edit', edit_sharespace_path(@sharespace) %> |
+<%= link_to 'Back', sharespaces_path %>

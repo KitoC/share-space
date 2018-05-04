@@ -1,0 +1,38 @@
+<%= form_with(model: sharespace, local: true) do |form| %>
+  <% if sharespace.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sharespace.errors.count, "error") %> prohibited this sharespace from being saved:</h2>
+
+      <ul>
+      <% sharespace.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= current_user.sharespace_venues.last.name %>
+    <%= form.hidden_field :sharespace_venue_id, value: current_user.sharespace_venues.last.id, id: :sharespace_sharespace_venue_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :type %>
+    <%= form.text_field :space_type, id: :sharespace_space_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :sharespace_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.text_field :cost, id: :sharespace_cost %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

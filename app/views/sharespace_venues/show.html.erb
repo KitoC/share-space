@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sharespace_venue.user %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @sharespace_venue.name %>
+</p>
+
+<p>
+  <strong>Brief description:</strong>
+  <%= @sharespace_venue.brief_description %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @sharespace_venue.description %>
+</p>
+
+<p>
+  <strong>Rules:</strong>
+  <%= @sharespace_venue.rules %>
+</p>
+
+<p>
+  <strong>Surrounding area description:</strong>
+  <%= @sharespace_venue.surrounding_area_description %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @sharespace_venue.address.full_street_address %>
+</p>
+<td><iframe
+  width="250"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
+    &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
+</iframe></td>
+<%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) %>
+<%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) %> |
+<%= link_to 'Back', sharespace_venues_path %>
