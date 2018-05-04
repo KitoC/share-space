@@ -20,5 +20,6 @@
   <%= @sharespace.sharespace_venue %>
 </p>
 
+<%= render 'photos/form', photo: Photo.new, photoable: @sharespace %>
 <%= link_to 'Edit', edit_sharespace_path(@sharespace) %> |
 <%= link_to 'Back', sharespaces_path %>

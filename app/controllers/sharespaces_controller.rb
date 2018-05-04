@@ -28,7 +28,7 @@ class SharespacesController < ApplicationController
 
     respond_to do |format|
       if @sharespace.save
-        format.html { redirect_to new_photo_path, notice: 'Sharespace was successfully created.' }
+        format.html { redirect_to new_photo_path(:params => {:photoable_id => @sharespace.id, :photoable_type => @sharespace.class.name} ), notice: 'Sharespace was successfully created.' }
         format.json { render :show, status: :created, location: @sharespace }
       else
         format.html { render :new }

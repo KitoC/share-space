@@ -43,7 +43,7 @@ class AddressesController < ApplicationController
     respond_to do |format|
       if @address.update(address_params)
         if @address.addressable_type == "SharespaceVenue"
-          format.html {redirect_to new_sharespace_path, notice: 'Address was successfully updated.' }
+          format.html {redirect_to @address.addressable, notice: 'Address was successfully updated.' }
           format.json { render :show, status: :ok, location: @address }
         else
           format.html { redirect_to user_path, notice: 'Address was successfully updated.' }

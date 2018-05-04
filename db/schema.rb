@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20180504000206) do
     t.string "space_type"
     t.text "description"
     t.float "cost"
+    t.integer "profile_photo"
     t.bigint "sharespace_venue_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

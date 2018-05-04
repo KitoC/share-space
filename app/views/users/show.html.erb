@@ -12,6 +12,7 @@
 
 </ul>
 
+<h3> Upload an awesome photo for your awesome life!</h3>
 <%= render 'photos/form', photo: Photo.new, photoable: @user %>
 <%= link_to 'Edit Address', edit_address_path(@user.address) %>
 <%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" if current_user ==  @user %>

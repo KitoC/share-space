@@ -25,11 +25,17 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(photo_params)
+    @user = current_user
 
     respond_to do |format|
-      if @photo.save
-        format.html { redirect_to sharespace_venues_path, notice: 'Photo was successfully created.' }
-        format.json { render :show, status: :created, location: @photo }
+      if @photo.save(photo_params)
+        if @photo.photoable_type == "SharespaceVenue"
+          format.html {redirect_to @photo.photoable, notice: 'photo was successfully updated.' }
+          format.json { render :show, status: :ok, location: @photo }
+        else
+          format.html { redirect_to @user, notice: 'photo was successfully updated.' }
+          format.json { render :show, status: :ok, location: @photo }
+        end
       else
         format.html { render :new }
         format.json { render json: @photo.errors, status: :unprocessable_entity }

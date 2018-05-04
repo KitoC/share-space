@@ -34,6 +34,9 @@
   <strong>Address:</strong>
   <%= @sharespace_venue.address.full_street_address %>
 </p>
+<p>
+<%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue} ) %>
+</p>
 <td><iframe
   width="250"
   height="250"
@@ -41,6 +44,8 @@
   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
     &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
 </iframe></td>
+<h3> Upload an awesome photo for your awesome listing!</h3>
+<%= render 'photos/form', photo: Photo.new, photoable: @sharespace_venue %>
 <%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) %>
 <%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) %> |
 <%= link_to 'Back', sharespace_venues_path %>

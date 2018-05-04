@@ -12,7 +12,7 @@
 
   <% @addresses.each do |address| listing = address.addressable %>
   <div class="listing">
-    <div><%= image_tag listing.sharespaces.first.photos.first.image_url(:thumb) if listing.sharespaces.first.photos.first != nil %></div>
+    <div><%= image_tag listing.photos.first.image_url(:thumb) if listing.photos.first != nil %></div>
     <h5 style="margin-bottom: 0;"><%= link_to listing.name, listing %></h5>
     <p style="margin-top: 0;"><%=  listing.address.full_street_address %></p>
     <%= link_to 'Edit', edit_sharespace_venue_path(listing) %>
