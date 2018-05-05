@@ -1,3 +1,18 @@
+
+
+<%= semantic_form_for @booking do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :date_from, as: :date_picker %>
+    <%= f.input :date_to, as: :date_picker %>
+    <%= f.input :description %>
+    <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id } %>
+    <%= f.input :sharespace_id, :input_html => { :value => params[:sharespace_id] } %>
+  <% end %>
+  <%= f.actions do %>
+     <%= f.action :submit, :label => :dummie, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+   <% end %>
+<% end %>
+
 <script>
 var array =
  [
@@ -16,16 +31,3 @@ var array =
  });
 
 </script>
-
-<%= semantic_form_for @booking do |f| %>
-  <%= f.inputs do %>
-    <%= f.input :date_from, as: :date_picker %>
-    <%= f.input :date_to, as: :date_picker %>
-    <%= f.input :description %>
-    <%= f.input :user_id, :input_html => { :value => current_user.id } %>
-    <%= f.input :sharespace_id, :input_html => { :value => params[:sharespace_id] } %>
-  <% end %>
-  <%= f.actions do %>
-     <%= f.action :submit, :label => :dummie, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
-   <% end %>
-<% end %>

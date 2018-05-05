@@ -1,4 +1,5 @@
 class SharespaceVenue < ApplicationRecord
+  resourcify
 
   belongs_to :user
   has_one :address, as: :addressable
