@@ -88,6 +88,8 @@ GEM
     faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.23-x86-mingw32)
+    formtastic (3.1.5)
+      actionpack (>= 3.2.13)
     geocoder (1.4.7)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -173,6 +175,8 @@ GEM
     selenium-webdriver (3.11.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
+    simple_calendar (2.2.7)
+      rails (>= 3.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -221,6 +225,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.4)
   dotenv-rails
+  formtastic (~> 3.0)
   geocoder (~> 1.4)
   jbuilder (~> 2.5)
   pg (>= 0.18, < 2.0)
@@ -228,6 +233,7 @@ DEPENDENCIES
   rails (~> 5.1.6)
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_calendar (~> 2.0)
   stripe (~> 3.13)
   turbolinks (~> 5)
   tzinfo-data

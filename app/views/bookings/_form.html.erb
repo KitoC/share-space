@@ -1,42 +1,33 @@
-<%= form_with(model: booking, local: true) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+<script>
 
-      <ul>
-      <% booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+var array =
+ [
+   <% calendar_date_block(params[:sharespace_id]).each do |date| %>
+   '<%= date.to_s %>',
+   <% end %>
+ ]
+
+$(document).ready(function(){
+  $('#booking_date_from, #booking_date_to').datepicker({
+    dateFormat:'yy-mm-dd',
+    beforeShowDay: function(date){
+        var string = jQuery.datepicker.formatDate('yy-mm-dd', date);
+        return [ array.indexOf(string) == -1 ]
+      }
+    });
+});
+
+</script>
+
+<%= semantic_form_for @booking do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :date_from, as: :date_picker %>
+    <%= f.input :date_to, as: :date_picker %>
+    <%= f.input :description %>
+    <%= f.input :user_id, :input_html => { :value => current_user.id } %>
+    <%= f.input :sharespace_id, :input_html => { :value => params[:sharespace_id] } %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :date_from %>
-    <%= form.date_select :date_from, id: :booking_date_from %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date_to %>
-    <%= form.date_select :date_to, id: :booking_date_to %>
-  </div>
-
-  <div class="field">
-    <%= form.label :total_days %>
-    <%= form.number_field :total_days, id: :booking_total_days %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, value: current_user.id, id: :booking_user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sharespace_id %>
-    <%= form.text_field :sharespace_id, value: params[:sharespace_id], id: :booking_sharespace_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.actions do %>
+     <%= f.action :submit, :label => :dummie, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+   <% end %>
 <% end %>

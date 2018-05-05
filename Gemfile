@@ -63,3 +63,9 @@ gem "cloudinary", "~> 1.9"
 
 # Added at 2018-05-04 20:03:55 +1000 by Kitoc:
 gem "stripe", "~> 3.13"
+
+# Added at 2018-05-04 by Kitoc:
+gem "simple_calendar", "~> 2.0"
+
+# Added at 2018-05-05 by Kitoc:
+gem 'formtastic', '~> 3.0'

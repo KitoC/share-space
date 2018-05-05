@@ -12,6 +12,9 @@
  *
  *= require_tree .
  *= require_self
+ *= require simple_calendar
+ *= require formtastic
+ *= require my_formtastic_changes
  */
 html
 {
@@ -20,5 +23,13 @@ html
 body
 {
   height: 100%;
-  overflow: hidden; 
+  overflow: hidden;
+}
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+
+
+input[type="date"]::-webkit-input-placeholder{
+    visibility: hidden !important;
 }
