@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'New Collab Space Listing', new_sharespace_venue_path %>
 
 <h1>Share Space Listings</h1>
 <%= render 'search_address' %>
@@ -15,8 +16,8 @@
     <div><%= image_tag listing.photos.first.image_url(:thumb) if listing.photos.first != nil %></div>
     <h5 style="margin-bottom: 0;"><%= link_to listing.name, listing %></h5>
     <p style="margin-top: 0;"><%=  listing.address.full_street_address %></p>
-    <%= link_to 'Edit', edit_sharespace_venue_path(listing) %>
-    <%= link_to 'Edit Address', edit_address_path(listing.address) %>
+    <%= link_to 'Edit', edit_sharespace_venue_path(listing) if current_user.can_update?(address.addressable) %>
+    <%= link_to 'Edit Address', edit_address_path(listing.address) if current_user.can_update?(address.addressable) %>
     <%= link_to 'Show', listing %>
   </div>
 
@@ -75,5 +76,3 @@
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_u77wbZStldL82_gGDInvPlanmANOyl8&callback=initMap">
    </script>
 <br>
-
-<%= link_to 'New Collab Space Listing', new_sharespace_venue_path %>

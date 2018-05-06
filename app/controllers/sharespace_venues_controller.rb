@@ -25,16 +25,19 @@ class SharespaceVenuesController < ApplicationController
 
   # GET /sharespace_venues/new
   def new
+    authorization("create")
     @sharespace_venue = SharespaceVenue.new
   end
 
   # GET /sharespace_venues/1/edit
   def edit
+    authorization("update", @sharespace_venu)
   end
 
   # POST /sharespace_venues
   # POST /sharespace_venues.json
   def create
+    authorization("create")
     @sharespace_venue = SharespaceVenue.new(sharespace_venue_params)
 
     respond_to do |format|
@@ -51,6 +54,8 @@ class SharespaceVenuesController < ApplicationController
   # PATCH/PUT /sharespace_venues/1
   # PATCH/PUT /sharespace_venues/1.json
   def update
+    authorization("update", @sharespace_venu)
+
     respond_to do |format|
       if @sharespace_venue.update(sharespace_venue_params)
         format.html { redirect_to @sharespace_venue, notice: 'Collab space listing was successfully updated.' }
@@ -65,6 +70,8 @@ class SharespaceVenuesController < ApplicationController
   # DELETE /sharespace_venues/1
   # DELETE /sharespace_venues/1.json
   def destroy
+    authorization("destroy", @sharespace_venu)
+
     @sharespace_venue.destroy
     respond_to do |format|
       format.html { redirect_to sharespace_venues_url, notice: 'Collab space listing was successfully destroyed.' }

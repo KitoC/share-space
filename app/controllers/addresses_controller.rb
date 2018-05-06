@@ -4,26 +4,33 @@ class AddressesController < ApplicationController
   # GET /addresses
   # GET /addresses.json
   def index
+    authorization("admin")
     @addresses = Address.all
   end
 
   # GET /addresses/1
   # GET /addresses/1.json
   def show
+    authorization("admin")
   end
 
   # GET /addresses/new
   def new
+    # Note - users and venues are all created a default address when they sign up. So considering users and venues only have_one :address, neither class needs to create a new address for any reason.
+    authorization("admin")
     @address = Address.new
   end
 
   # GET /addresses/1/edit
   def edit
+    authorization("update", @address)
   end
 
   # POST /addresses
   # POST /addresses.json
   def create
+    authorization("admin")
+
     @address = Address.new(address_params)
 
     respond_to do |format|
@@ -40,6 +47,8 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   # PATCH/PUT /addresses/1.json
   def update
+    authorization("update", @address)
+
     respond_to do |format|
       if @address.update(address_params)
         if @address.addressable_type == "SharespaceVenue"
@@ -59,6 +68,8 @@ class AddressesController < ApplicationController
   # DELETE /addresses/1
   # DELETE /addresses/1.json
   def destroy
+    authorization("destroy", @address)
+
     @address.destroy
     respond_to do |format|
       format.html { redirect_to addresses_url, notice: 'Address was successfully destroyed.' }
@@ -76,4 +87,6 @@ class AddressesController < ApplicationController
     def address_params
       params.require(:address).permit(:street_num, :unit_num, :street_name, :street_type, :address_type, :address_identifier, :city_suburb, :state, :postcode, :country)
     end
+
+
 end

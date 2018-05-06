@@ -4,6 +4,7 @@ class SharespacesController < ApplicationController
   # GET /sharespaces
   # GET /sharespaces.json
   def index
+    authorization("admin")
     @sharespaces = Sharespace.all
   end
 
@@ -14,16 +15,20 @@ class SharespacesController < ApplicationController
 
   # GET /sharespaces/new
   def new
+    authorization("create")
     @sharespace = Sharespace.new
   end
 
   # GET /sharespaces/1/edit
   def edit
+    authorization("update", @sharespace)
   end
 
   # POST /sharespaces
   # POST /sharespaces.json
   def create
+    authorization("create")
+
     @sharespace = Sharespace.new(sharespace_params)
 
     respond_to do |format|
@@ -40,6 +45,8 @@ class SharespacesController < ApplicationController
   # PATCH/PUT /sharespaces/1
   # PATCH/PUT /sharespaces/1.json
   def update
+    authorization("update", @sharespace)
+
     respond_to do |format|
       if @sharespace.update(sharespace_params)
         format.html { redirect_to @sharespace, notice: 'Sharespace was successfully updated.' }
@@ -54,6 +61,8 @@ class SharespacesController < ApplicationController
   # DELETE /sharespaces/1
   # DELETE /sharespaces/1.json
   def destroy
+    authorization("destroy", @sharespace)
+
     @sharespace.destroy
     respond_to do |format|
       format.html { redirect_to sharespaces_url, notice: 'Sharespace was successfully destroyed.' }

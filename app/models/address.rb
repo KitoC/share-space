@@ -1,4 +1,5 @@
 class Address < ApplicationRecord
+  resourcify
   geocoded_by :full_street_address
   belongs_to :addressable, polymorphic: true, optional: true
   after_validation :geocode

@@ -35,13 +35,13 @@
   <%= @sharespace_venue.address.full_street_address %>
 </p>
 <p>
-<%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue} ) %>
+<%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue} ) if current_user.can_update?(@sharespace_venue) %>
 </p>
 <% @sharespace_venue.sharespaces.each do |sharespace| %>
 <div class="sharespace">
   <div><%= image_tag sharespace.photos.first.image_url(:thumb) if sharespace.photos.first != nil %></div>
   <h5 style="margin-bottom: 0;"><%= link_to sharespace.space_type, sharespace %></h5>
-  <%= link_to 'Edit', edit_sharespace_venue_path(sharespace) %>
+  <%= link_to 'Edit', edit_sharespace_venue_path(sharespace) if current_user.can_update?(@sharespace_venue) %>
   <%= link_to 'Show', sharespace %>
 </div>
 <% end %>
@@ -53,7 +53,11 @@
     &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
 </iframe></td>
 <h3> Upload an awesome photo for your awesome listing!</h3>
-<%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue %>
-<%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) %>
-<%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) %> |
+
+<%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if current_user.can_update?(@sharespace_venue) %>
+
+<%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) if current_user.can_update?(@sharespace_venue) %>
+
+<%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) if current_user.can_update?(@sharespace_venue) %>
+
 <%= link_to 'Back', sharespace_venues_path %>

@@ -4,6 +4,7 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
+    authorization("admin")
     @albums = Album.all
   end
 
@@ -14,16 +15,19 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
+    authorization("create")
     @album = Album.new
   end
 
   # GET /albums/1/edit
   def edit
+    authorization("update", @album)
   end
 
   # POST /albums
   # POST /albums.json
   def create
+    authorization("create")
     @album = Album.new(album_params)
 
     respond_to do |format|
@@ -40,6 +44,8 @@ class AlbumsController < ApplicationController
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
+    authorization("update", @album)
+
     respond_to do |format|
       if @album.update(album_params)
         format.html { redirect_to @album, notice: 'Album was successfully updated.' }
@@ -54,6 +60,8 @@ class AlbumsController < ApplicationController
   # DELETE /albums/1
   # DELETE /albums/1.json
   def destroy
+    authorization("destroy", @album)
+
     @album.destroy
     respond_to do |format|
       format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
