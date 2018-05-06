@@ -11,4 +11,9 @@ class UserNotifierMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: 'You made a listing!')
   end
+
+  def send_transaction_record(user)
+    @user = user
+    mail(to: @user.email, subject: 'You made a booking!')
+  end
 end

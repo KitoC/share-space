@@ -10,8 +10,8 @@ class Photo < ApplicationRecord
   end
 
   def profile_check
-    if self.photoable.photos.count <= 1
-      self.photoable.update(profile_photo: self.id)
-    end
+      if self.photoable.photos.count <= 1
+        self.photoable.update(profile_photo: self.id)
+      end
   end
 end

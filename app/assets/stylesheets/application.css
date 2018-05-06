@@ -33,3 +33,15 @@ input::-webkit-calendar-picker-indicator{
 input[type="date"]::-webkit-input-placeholder{
     visibility: hidden !important;
 }
+
+.profile_photo
+{
+  height: 200px;
+  width: 200px;
+}
+
+.thumb_photo
+{
+  height: 100px;
+  width: 100px;
+}

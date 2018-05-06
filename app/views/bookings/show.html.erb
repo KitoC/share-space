@@ -9,6 +9,9 @@
   <strong>Date to:</strong>
   <%= @booking.date_to %>
 </p>
+<% if @booking.total_cost != nil && @booking.total_cost >= 0.1 %>
+<p>NOTE- These dates are saved for 5 minutes. If you have not paid by then this booking will be destroyed.</p>
+<% end %>
 
 <p>
   <strong>Total days:</strong>
@@ -24,7 +27,7 @@
   <strong>Share space:</strong>
   <%= @booking.sharespace %>
 </p>
-<%= render 'charges/bookingpayment', item: @booking %>
+<%= render 'charges/bookingpayment', item: @booking if @booking.total_cost != nil %>
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<%= link_to 'Back', @booking.sharespace.sharespace_venue %>

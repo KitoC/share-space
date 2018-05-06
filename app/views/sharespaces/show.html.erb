@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= profile_photo_display(@sharespace, "profile_photo") %>
 <p>
   <strong>Type:</strong>
   <%= @sharespace.space_type %>
@@ -9,21 +10,25 @@
   <strong>Description:</strong>
   <%= @sharespace.description %>
 </p>
-
 <p>
-  <strong>Cost:</strong>
-  <%= @sharespace.cost %>
+  <% if @sharespace.cost != nil or @sharespace.cost == 0  %>
+    <strong>Cost:</strong>
+    <%= @sharespace.cost %>
+  <% else %>
+    <strong>Free</strong>
+  <% end %>
 </p>
 
 <p>
   <strong>Share space listing:</strong>
-  <%= @sharespace.sharespace_venue %>
+  <%= @sharespace.sharespace_venue.name %>
 </p>
+<% if user_signed_in? %>
+  <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace if current_user.can_update?(@sharespace.sharespace_venue) %>
 
-<%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace if current_user.can_update?(@sharespace.sharespace_venue) %>
+  <%= link_to 'Make a Booking', new_booking_path(params:{sharespace_id: @sharespace.id}) %>
 
-<%= link_to 'Make a Booking', new_booking_path(params:{sharespace_id: @sharespace.id}) %>
+  <%= link_to 'Edit', edit_sharespace_path(@sharespace) if current_user.can_update?(@sharespace.sharespace_venue) %>
+<% end %>
 
-<%= link_to 'Edit', edit_sharespace_path(@sharespace) if current_user.can_update?(@sharespace.sharespace_venue) %>
-
-<%= link_to 'Back', sharespaces_path %>
+<%= link_to 'Back', @sharespace.sharespace_venue %>

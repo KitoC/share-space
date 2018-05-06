@@ -23,7 +23,7 @@ class AddressesController < ApplicationController
 
   # GET /addresses/1/edit
   def edit
-    authorization("update", @address)
+    authorization("update", @address.addressable)
   end
 
   # POST /addresses
@@ -47,7 +47,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   # PATCH/PUT /addresses/1.json
   def update
-    authorization("update", @address)
+    authorization("update", @address.addressable)
 
     respond_to do |format|
       if @address.update(address_params)

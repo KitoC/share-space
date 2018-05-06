@@ -13,12 +13,16 @@ class Booking < ApplicationRecord
   private
 
   def set_paid_status
-    self.update(paid: false)
+    if self.total_cost == 0 or self.total_cost == nil
+      self.update(paid: true)
+    else
+      self.update(paid: false)
+    end
   end
 
   def cost_days_math
     total_days = (self.date_to - self.date_from).to_i + 1
-    total_cost = self.sharespace.cost * total_days
+    total_cost = self.sharespace.cost * total_days if self.sharespace.cost != nil
     self.update(total_days: total_days, total_cost: total_cost)
   end
 end

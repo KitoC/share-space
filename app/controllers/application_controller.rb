@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :destroy_booking?
+
 
     protected
     # This method allows custom parameters to be passed through and applied too the custom columns setup for the User model through devise.
@@ -42,4 +44,14 @@ class ApplicationController < ActionController::Base
       flash[:notice] = 'The dates you have entered are the wrong way around! Please try again.'
       redirect_back(fallback_location: root_path)
     end
+
+
+    # This action destroys the user's last booking if they haven't paid for it yet.
+    def destroy_booking?
+      if current_user.bookings.last != nil
+        current_user.bookings.last.destroy if (Time.now - current_user.bookings.last.created_at ) / 60 >= 5 && current_user.bookings.last.paid != true
+      end
+    end
+
+
 end

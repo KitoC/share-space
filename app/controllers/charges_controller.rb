@@ -14,9 +14,10 @@ class ChargesController < ApplicationController
       :currency => 'aud'
     )
     set_paid_status(@item)
+    UserNotifierMailer.send_transaction_record(current_user).deliver
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to :back
+      redirect_to @item
   end
 
   private
