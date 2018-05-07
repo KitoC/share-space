@@ -16,10 +16,13 @@
   <body>
     <nav>
       <%= link_to 'Home', root_path, class: "navbar-brand" %>
-      <%= link_to "Profile", current_user, class: "nav-link active" %>
-      <%= link_to 'Log out', destroy_user_session_path, class: "nav-link active", method: :delete %>
-      <%= link_to 'Log In', new_user_session_path, class: "nav-link active" %>
-      <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link active" %>
+      <%= link_to 'Share Spaces', sharespace_venues_path, class: "navbar-brand" %>
+      <%= link_to 'Log out', destroy_user_session_path, class: "nav-link active", method: :delete if user_signed_in? %>
+      <%= link_to 'Log In', new_user_session_path, class: "nav-link active" if !user_signed_in? %>
+      <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link active" if !user_signed_in? %>
+      <%= link_to "Profile", profile_url, class: "nav-link active" %>
+      <%= link_to 'Admin', admin_url, class: "navbar-brand" if current_user.admin_only %>
+
       <%= link_to 'Your Booking', current_user.bookings.last, class: "nav-link active" if user_signed_in? && (current_user.bookings.count >= 1 && current_user.bookings.last.paid == false) %>
     </nav>
     <p class="notice"><%= notice %></p>
