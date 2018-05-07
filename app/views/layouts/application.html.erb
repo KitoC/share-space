@@ -20,7 +20,7 @@
       <%= link_to 'Log out', destroy_user_session_path, class: "nav-link active", method: :delete %>
       <%= link_to 'Log In', new_user_session_path, class: "nav-link active" %>
       <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link active" %>
-      <%= link_to 'Your Booking', current_user.bookings.last, class: "nav-link active" if current_user.bookings.last.paid == false %>
+      <%= link_to 'Your Booking', current_user.bookings.last, class: "nav-link active" if user_signed_in? && (current_user.bookings.count >= 1 && current_user.bookings.last.paid == false) %>
     </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

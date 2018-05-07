@@ -16,6 +16,7 @@
     <div><%= profile_photo_display(address.addressable, "profile_photo") %></div>
     <h5 style="margin-bottom: 0;"><%= link_to listing.name, listing %></h5>
     <p style="margin-top: 0;"><%=  listing.address.full_street_address %></p>
+    <p><%= rating_average(address.addressable) %></p>
     <% if user_signed_in? %>
       <%= link_to 'Edit', edit_sharespace_venue_path(listing) if current_user.can_update?(address.addressable) %>
       <%= link_to 'Edit Address', edit_address_path(listing.address) if current_user.can_update?(address.addressable) %>

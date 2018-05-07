@@ -27,7 +27,12 @@
   <strong>Share space:</strong>
   <%= @booking.sharespace %>
 </p>
-<%= render 'charges/bookingpayment', item: @booking if @booking.total_cost != nil %>
+<%= render 'charges/bookingpayment', item: @booking if @booking.total_cost != nil && @booking.paid == false %>
+
+<%= render 'reviews/review', review: Review.new, reviewable_object: @booking.sharespace.sharespace_venue, reference_object: @booking if @booking.host_reviewed == false && @booking.paid == true %>
+
+<%= render 'reviews/review', review: Review.new, reviewable_object: @booking.user, reference_object: @booking if @booking.user_reviewed == false && @booking.paid == true %>
+
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Back', @booking.sharespace.sharespace_venue %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180505071128) do
+ActiveRecord::Schema.define(version: 20180507014722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,14 +51,24 @@ ActiveRecord::Schema.define(version: 20180505071128) do
     t.integer "total_days"
     t.float "total_cost"
     t.datetime "date_paid"
-    t.boolean "paid"
     t.string "description"
+    t.boolean "paid"
+    t.boolean "host_reviewed"
+    t.boolean "user_reviewed"
     t.bigint "user_id"
     t.bigint "sharespace_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sharespace_id"], name: "index_bookings_on_sharespace_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category"
+    t.bigint "sharespace_venue_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sharespace_venue_id"], name: "index_categories_on_sharespace_venue_id"
   end
 
   create_table "industries", force: :cascade do |t|
@@ -100,15 +110,16 @@ ActiveRecord::Schema.define(version: 20180505071128) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.bigint "user_id"
     t.integer "rating"
     t.text "review"
     t.string "reviewable_type"
     t.bigint "reviewable_id"
+    t.string "reference_type"
+    t.bigint "reference_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["reference_type", "reference_id"], name: "index_reviews_on_reference_type_and_reference_id"
     t.index ["reviewable_type", "reviewable_id"], name: "index_reviews_on_reviewable_type_and_reviewable_id"
-    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -189,9 +200,9 @@ ActiveRecord::Schema.define(version: 20180505071128) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "categories", "sharespace_venues"
   add_foreign_key "occupations", "industries"
   add_foreign_key "perks", "sharespace_venues"
-  add_foreign_key "reviews", "users"
   add_foreign_key "sharespace_venues", "users"
   add_foreign_key "sharespaces", "sharespace_venues"
   add_foreign_key "users", "occupations"

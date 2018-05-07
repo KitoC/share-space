@@ -6,8 +6,10 @@ class CreateBookings < ActiveRecord::Migration[5.1]
       t.integer :total_days
       t.float :total_cost
       t.datetime :date_paid
-      t.boolean :paid
       t.string :description
+      t.boolean :paid
+      t.boolean :host_reviewed
+      t.boolean :user_reviewed
       t.belongs_to :user, index: true
       t.belongs_to :sharespace, index: true
 

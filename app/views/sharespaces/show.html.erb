@@ -26,7 +26,7 @@
 <% if user_signed_in? %>
   <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace if current_user.can_update?(@sharespace.sharespace_venue) %>
 
-  <%= link_to 'Make a Booking', new_booking_path(params:{sharespace_id: @sharespace.id}) %>
+  <%= link_to 'Make a Booking', new_booking_path(params:{sharespace_id: @sharespace.id}) if current_user.bookings.where(paid:false).count == 0 %>
 
   <%= link_to 'Edit', edit_sharespace_path(@sharespace) if current_user.can_update?(@sharespace.sharespace_venue) %>
 <% end %>

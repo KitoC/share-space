@@ -10,4 +10,21 @@ module ApplicationHelper
     end
   end
 
+  # Review calculater. Calculates all of the objects ratings and provides an average.
+  def rating_average(object)
+    if object.reviews.count >= 1
+      array = []
+      object.reviews.each do |review|
+        array.push(review.rating)
+      end
+      return "Rating: #{(array.inject{ |sum, el| sum + el }.to_f / array.size).round(1)}"
+    else
+      if object.class.name == "SharespaceVenue"
+        "#{object.name} has no reviews yet."
+      else
+        "#{object.first_name} #{object.last_name} has no reviews yet."
+      end
+    end
+  end
+
 end

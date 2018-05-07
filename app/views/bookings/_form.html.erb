@@ -6,7 +6,7 @@
     <%= f.input :date_to, as: :date_picker %>
     <%= f.input :description %>
     <%= f.input :user_id, as: :hidden, :input_html => { :value => current_user.id } %>
-    <%= f.input :sharespace_id, :input_html => { :value => params[:sharespace_id] } %>
+    <%= f.input :sharespace_id, as: :hidden, :input_html => { :value => params[:sharespace_id] } %>
   <% end %>
   <%= f.actions do %>
      <%= f.action :submit, :label => :dummie, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>

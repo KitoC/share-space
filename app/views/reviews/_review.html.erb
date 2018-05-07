@@ -1,0 +1,16 @@
+
+
+
+<%= semantic_form_for review do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :rating, :as => :radio, :collection => ["1", "2", "3", "4", "5"], :label_html => { :class => 'container' } %>
+    <%= f.input :review %>
+    <%= f.input :reviewable_type, :input_html => { :value => reviewable_object.class.name } %>
+    <%= f.input :reviewable_id, :input_html => { :value => reviewable_object.id } %>
+    <%= f.input :reference_type, :input_html => { :value => reference_object.class.name } %>
+    <%= f.input :reference_id, :input_html => { :value => reference_object.id } %>
+  <% end %>
+  <%= f.actions do %>
+     <%= f.action :submit, :label => :dummie, :button_html => { :class => "primary", :disable_with => 'Wait...' } %>
+   <% end %>
+<% end %>

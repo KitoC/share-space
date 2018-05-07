@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :address, as: :addressable
 
   has_many :photos, as: :photoable
+  has_many :reviews, as: :reviewable
   has_many :sharespace_venues
   has_many :bookings
   has_many :collab_space_listings

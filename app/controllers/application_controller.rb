@@ -48,8 +48,8 @@ class ApplicationController < ActionController::Base
 
     # This action destroys the user's last booking if they haven't paid for it yet.
     def destroy_booking?
-      if current_user.bookings.last != nil
-        current_user.bookings.last.destroy if (Time.now - current_user.bookings.last.created_at ) / 60 >= 5 && current_user.bookings.last.paid != true
+      if user_signed_in? && current_user.bookings.last != nil
+        current_user.bookings.where(paid: false).destroy_all if (Time.now - current_user.bookings.last.created_at ) / 60 >= 5
       end
     end
 

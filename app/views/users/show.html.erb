@@ -3,6 +3,7 @@
 <h1><%= @user.first_name %> <%= @user.last_name %><h1>
 <h2>Profile</h2>
 <div><%= profile_photo_display(@user,"profile_photo") %></div>
+<p><%= rating_average(@user) %></p>
 <ul list-style: "none">
 <li>Email: <%= @user.email %></li>
 <li>DoB: <%= @user.dob %></li>
