@@ -14,7 +14,15 @@
   </head>
 
   <body>
-    <nav class="navbar">
+    <div class="topnav" id="myTopnav">
+      <a href="#home" class="active">Home</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
+    </div>
+
+    <nav class="navbar" id="myNavbar">
       <%= link_to 'Home', root_path, class: "nav-link" %>
       <%= link_to 'Share Spaces', sharespace_venues_path, class: "nav-link" %>
       <%= link_to 'Log out', destroy_user_session_path, class: "nav-link", method: :delete if user_signed_in? %>
@@ -22,9 +30,10 @@
       <%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" if !user_signed_in? %>
       <%= link_to "Profile", profile_url, class: "nav-link" %>
       <%= link_to 'Admin', admin_url, class: "nav-link" if user_signed_in? && current_user.admin_only %>
-
       <%= link_to 'Your Booking', current_user.bookings.last, class: "nav-link booking" if user_signed_in? && (current_user.bookings.count >= 1 && current_user.bookings.last.paid == false) %>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
