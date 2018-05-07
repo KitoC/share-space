@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     authorization("admin")
-    @reviews = review.all
+    @reviews = Review.all
   end
 
   # GET /reviews/1

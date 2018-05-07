@@ -1,0 +1,20 @@
+@mixin button($color, $border-width, $padding, $font-size, $font-weight){
+  color: $color;
+  border: $border-width solid $button-border;
+  font-size: $font-size;
+  padding: $padding;
+  font-weight: $font-weight;
+  &:hover {
+    color: darken($color, 30%);
+  }
+}
+
+
+
+@mixin small()
+{
+  @media only screen and (max-width: 600px)
+  {
+    @content;
+  }
+}

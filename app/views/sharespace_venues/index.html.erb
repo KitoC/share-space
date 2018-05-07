@@ -34,7 +34,7 @@
      function initMap() {
        map = new google.maps.Map(document.getElementById('map'), {
          zoom: 15,
-         <% if SharespaceVenue.first != nil %>
+         <% if SharespaceVenue.first != nil && SharespaceVenue.first.address.latitude != nil %>
          center: new google.maps.LatLng(<%= SharespaceVenue.first.address.latitude %>, <%= SharespaceVenue.first.address.longitude %>),
          <% else %>
          center: new google.maps.LatLng(-27.4698, 153.0251),
