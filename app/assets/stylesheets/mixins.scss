@@ -9,11 +9,23 @@
   }
 }
 
-
-
-@mixin small()
+@mixin border( $border-width: 0, $type: none, $border-color: none, $bottom-left: 0, $bottom-right: 0, $top-left: 0, $top-right: 0, )
 {
-  @media only screen and (max-width: 600px)
+  border-width: $border-width;
+  border-style: $type;
+  border-color: $border-color;
+  border-radius: $bottom-left $bottom-right $top-left $top-right;
+}
+@mixin width-height($width, $height)
+{
+  width: $width;
+  height: $height
+}
+
+
+@mixin breakpoint($width)
+{
+  @media only screen and (max-width: $width)
   {
     @content;
   }

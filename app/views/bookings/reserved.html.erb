@@ -1,0 +1,48 @@
+
+<% if current_user.bookings.count >= 1 && current_user.bookings.last.paid == false %>
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Date from:</strong>
+    <%= @booking.date_from %>
+  </p>
+
+  <p>
+    <strong>Date to:</strong>
+    <%= @booking.date_to %>
+  </p>
+  <% if @booking.total_cost != nil && @booking.total_cost >= 0.1 %>
+  <p>NOTE- These dates are saved for 5 minutes. If you have not paid by then this booking will be destroyed.</p>
+  <% end %>
+
+  <p>
+    <strong>Total days:</strong>
+    <%= @booking.total_days %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= @booking.user %>
+  </p>
+
+  <p>
+    <strong>Share space:</strong>
+    <%= @booking.sharespace %>
+  </p>
+  <%= render 'charges/bookingpayment', item: @booking if @booking.total_cost != nil && @booking.paid == false %>
+
+  <%= render 'reviews/review', review: Review.new, reviewable_object: @booking.sharespace.sharespace_venue, reference_object: @booking if @booking.host_reviewed == false && @booking.paid == true %>
+
+  <%= render 'reviews/review', review: Review.new, reviewable_object: @booking.user, reference_object: @booking if @booking.user_reviewed == false && @booking.paid == true %>
+
+
+  <%= link_to 'Edit', edit_booking_path(@booking) %> |
+  <%= link_to 'Back', @booking.sharespace.sharespace_venue %>
+<% else %>
+  <div style="text-align: center; margin-top: 100px;">
+    <%= image_tag("sad_face.jpg", class: "landing_image") %>
+    <h3>Oops, you took too long admiring the awesomeness of this website...<br><br>I know... it happens to me sometimes too...<br><br>Here is a link so you can make another booking.</h3>
+    <h3><%= link_to 'Share Spaces', sharespace_venues_path, class: "sharespace" %></h3>
+
+  </div>
+<% end %>

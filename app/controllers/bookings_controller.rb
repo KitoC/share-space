@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
-  
+
 
   # GET /bookings
   # GET /bookings.json
@@ -13,6 +13,10 @@ class BookingsController < ApplicationController
   # GET /bookings/1.json
   def show
     authorization("owner", @booking.user)
+  end
+
+  def reserved
+    @booking = current_user.bookings.last
   end
 
   # GET /bookings/new

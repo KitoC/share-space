@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile'
   get 'admin', to: 'users#admin'
+  get 'reserved_booking', to: 'bookings#reserved'
 
 
   post '/search', to: 'sharespace_venues#index'

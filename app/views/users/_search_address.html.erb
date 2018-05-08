@@ -1,0 +1,6 @@
+
+
+<%= form_tag("/search", method: "get") do %>
+  <%= text_field_tag(:address, "", placeholder: "Enter an address...", class: "search_bar") %>
+  <%= submit_tag("Search", class: "search_button") %>
+<% end %>

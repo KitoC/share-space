@@ -1,1 +1,59 @@
-<h1>HOME</h1>
+
+
+
+<div class="landing_page">
+  <%= image_tag("coworking.jpg", class: "landing_image") %>
+  <div class="blue_box">
+    <h1>Share-Space</h1>
+    <%= render 'search_address' %>
+  </div>
+</div>
+
+
+<div class="page_contents">
+
+  <h3>Featured Share-Spaces</h3>
+  <div class="featured">
+    <% count = 5 %>
+    <% until count == 0 %>
+    <div class="item">
+      <%= image_tag("default-image.jpg", class: "SharespaceVenue_image") %>
+      <h4>Co-space name</h4>
+      <p>Price</p>
+      <p>Rating</p>
+    </div>
+    <% count -= 1 %>
+    <% end %>
+  </div>
+
+  <h3>Featured Projects</h3>
+  <div class="featured">
+
+    <% count = 5 %>
+    <% until count == 0 %>
+    <div class="item">
+      <%= image_tag("default-image.jpg", class: "SharespaceVenue_image") %>
+      <h4>Project name</h4>
+      <p>Project brief:</p>
+      <p>Lorem ipsum dolor sit ...</p>
+    </div>
+    <% count -= 1 %>
+    <% end %>
+
+  </div>
+  <h3>Featured Blogs</h3>
+  <div class="featured">
+    <% count = 5 %>
+    <% until count == 0 %>
+    <div class="item">
+      <%= image_tag("default-image.jpg", class: "SharespaceVenue_image") %>
+      <h4>Blog title</h4>
+      <p>Lorem ipsum dolor sit ...</p>
+    </div>
+    <% count -= 1 %>
+    <% end %>
+  </div>
+
+
+
+</div>
