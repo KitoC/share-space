@@ -42,11 +42,9 @@ module ApplicationHelper
     end
   end
 
-  def featured_item
-    count = 5
-    until count == 0
-      count -+ 1
-    end
+  # This sets an array of the last 5 newly created & highest ranked blogs, listings or projects.
+  def featured_item(items)
+
   end
 
   # This method sets an address placeholder if the user hasn't updated their address yet.

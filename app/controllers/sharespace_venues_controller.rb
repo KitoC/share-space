@@ -15,7 +15,6 @@ class SharespaceVenuesController < ApplicationController
     end
     rescue
       flash[:notice] = "Sorry couldn't find a store near you."
-      redirect_to(:action => 'index')
   end
 
   # GET /sharespace_venues/1
