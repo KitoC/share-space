@@ -6,6 +6,7 @@ class CreateSharespaceVenues < ActiveRecord::Migration[5.1]
       t.string :brief_description
       t.text :description
       t.text :rules
+      t.integer :overall_rating
       t.text :surrounding_area_description
       t.integer :profile_photo
 

@@ -2,7 +2,13 @@ module ApplicationHelper
   # Sets a default profile image if the image location doesnt have one already.
   def profile_photo_display(object, photo_class)
     if object.photos.count == 0
-      image_tag("default-image.jpg", class: "#{photo_class}")
+      image_tag("default-image.png", class: "#{photo_class}_image")
+    elsif photo_class == "url_only"
+      if object.profile_photo != nil
+        Photo.find(object.profile_photo).image_url
+      else
+        object.photos.first.image_url
+      end
     elsif  object.profile_photo != nil
       image_tag Photo.find(object.profile_photo).image_url(photo_class)
     else
@@ -17,15 +23,17 @@ module ApplicationHelper
       object.reviews.each do |review|
         array.push(review.rating)
       end
-      return "Rating: #{(array.inject{ |sum, el| sum + el }.to_f / array.size).round(1)}"
+      return "Rating: #{(array.inject{ |sum, el| sum + el }.to_f / array.size).to_i}"
     else
       if object.class.name == "SharespaceVenue"
-        "#{object.name} has no reviews yet."
+        "No reviews yet."
       else
-        "#{object.first_name} #{object.last_name} has no reviews yet."
+        "No reviews yet."
       end
     end
   end
+
+
 
   def featured_item
     count = 5

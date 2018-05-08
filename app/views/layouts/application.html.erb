@@ -4,8 +4,8 @@
     <title>ShareSpace</title>
     <%= csrf_meta_tags %>
     <!-- CSS Normalizer  -->
+    <%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %>
     <%= stylesheet_link_tag    'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' %>
-
     <%= stylesheet_link_tag    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -21,9 +21,9 @@
       <nav class="navbar" id="myNavbar">
         <%= link_to 'Home', root_path, class: "home" %>
         <%= link_to 'Share Spaces', sharespace_venues_path, class: "sharespace" %>
+        <%= link_to 'Logout', destroy_user_session_path, class: "user_align justify-end", method: :delete if user_signed_in? %>
+        <%= link_to 'Login', new_user_session_path, class: "user_align justify-end" if !user_signed_in? %>
         <%= link_to "Profile", profile_url, class: "profile user_align" if user_signed_in? %>
-        <%= link_to 'Logout', destroy_user_session_path, class: "user_align", method: :delete if user_signed_in? %>
-        <%= link_to 'Login', new_user_session_path, class: "user_align" if !user_signed_in? %>
         <%= link_to 'Sign Up', new_user_registration_path, class: "user_align" if !user_signed_in? %>
         <%= link_to 'Your Booking', reserved_booking_path, class: "booking" if user_signed_in? && (current_user.bookings.count >= 1 && current_user.bookings.last.paid == false) %>
         <%= link_to 'Admin', admin_url, class: "admin" if user_signed_in? && current_user.admin_only %>

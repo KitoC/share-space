@@ -10,6 +10,6 @@ class Address < ApplicationRecord
     end
   end
   def vague_address
-    "#{city_suburb}, #{state}"
+    "#{city_suburb} #{state}"
   end
 end

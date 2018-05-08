@@ -15,6 +15,7 @@
  @import 'mixins';
  @import 'albums';
  @import 'home';
+ @import 'sharespace_venues';
 
 
 html
@@ -36,7 +37,18 @@ input::-webkit-calendar-picker-indicator{
 input[type="date"]::-webkit-input-placeholder{
     visibility: hidden !important;
 }
-
+a
+{
+  text-decoration: none;
+  color: black;
+}
+a:visited
+{
+  color: black;
+}
+.checked_star {
+    color: orange;
+}
 .profile_photo
 {
   height: 200px;
@@ -54,29 +66,22 @@ input[type="date"]::-webkit-input-placeholder{
 .nav_box
 {
   // background: #6ACBEA;
-  background: $primary;
-  color: white;
-  display: flex;
-  justify-content: center;
+  @include bluebar(6%)
 }
 .navbar
 {
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
   width: 80%;
 }
 
 /* Style the links inside the navigation bar */
 .navbar a {
-    float: left;
-    display: block;
-    text-decoration: none;
-    font-size: 1.5em;
-    text-decoration: none;
-    text-align: center;
-    color: white;
-    padding: 1rem 0.6em;
-    -webkit-transition: font-size 1s; /* For Safari 3.1 to 6.0 */
-    transition: margin-top 1s;
+  @include link
+  {}
 
     &:not(:first-child) {@include breakpoint($phone)
       {display: none;}
@@ -107,12 +112,15 @@ input[type="date"]::-webkit-input-placeholder{
     }
     &.profile
     {
-      padding-left: 0;
+
     }
     &:last-child
     {
       margin-right: 100px;
     }
+}
+.justify-end {
+  margin-left: auto;
 }
 
 
@@ -161,4 +169,11 @@ input[type="date"]::-webkit-input-placeholder{
     display: block;
     text-align: left;
   }
+}
+// Unirform page alignment
+.page_contents
+{
+  width: 100%;
+  padding: 0 10%;
+  box-sizing: border-box;
 }

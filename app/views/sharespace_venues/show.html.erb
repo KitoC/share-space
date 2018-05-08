@@ -1,47 +1,75 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+<style type="text/css">
+    .bgimg
+    {
+      <% if @sharespace_venue.photos.count == 0 %>
+      background-image: url('/assets/default-image.png');
+      <% else %>
+      background-image: url('<%= profile_photo_display(@sharespace_venue, "url_only") %>');
+      <% end %>
+    }
+</style>
 
-<%= profile_photo_display(@sharespace_venue, "profile_photo") %>
-<p>
-  <strong>User:</strong>
-  <%= @sharespace_venue.user %>
-</p>
+<div class="main_image bgimg" >
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @sharespace_venue.name %>
-</p>
-<p><%= rating_average(@sharespace_venue) %></p>
-
-
-<p>
-  <strong>Brief description:</strong>
-  <%= @sharespace_venue.brief_description %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @sharespace_venue.description %>
-</p>
-
-<p>
-  <strong>Rules:</strong>
-  <%= @sharespace_venue.rules %>
-</p>
-
-<p>
-  <strong>Surrounding area description:</strong>
-  <%= @sharespace_venue.surrounding_area_description %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @sharespace_venue.address.full_street_address %>
-</p>
-<p>
+<div class="tool_bar">
   <% if user_signed_in? %>
     <%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue} ) if current_user.can_update?(@sharespace_venue) %>
   <% end %>
-</p>
+  <% if user_signed_in? %>
+    <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if current_user.can_update?(@sharespace_venue) %>
+
+    <%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) if current_user.can_update?(@sharespace_venue) %>
+
+    <%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) if current_user.can_update?(@sharespace_venue) %>
+  <% end %>
+</div>
+
+<div class="split_grid">
+  <div class="left">
+    <div class="summary listing_info">
+      <p> type (placeholder)</p>
+      <h1><%= @sharespace_venue.name %></h1>
+      <h4><%= @sharespace_venue.address.vague_address %></h4>
+      <p><%= "#{@sharespace_venue.user.first_name} #{@sharespace_venue.user.last_name}" %></p>
+      <p><%= rating_average(@sharespace_venue) %></p>
+    </div>
+    <div class="details listing_info">
+      <p>
+        <strong>Description</strong>
+        <%= @sharespace_venue.description %>
+      </p>
+    </div>
+
+    <div class="rules listing_info">
+      <p>
+        <strong>Rules</strong>
+        <%= @sharespace_venue.rules %>
+      </p>
+    </div>
+    <div class="surrounding_area_description listing_info">
+      <p>
+        <strong>Surrounding area</strong>
+        <%= @sharespace_venue.surrounding_area_description %>
+      </p>
+    </div>
+ </div>
+
+<div class="right">
+  <td>
+    <iframe
+    width="100%"
+    height="250"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
+      &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
+    </iframe>
+  </td>
+</div>
+
+</div>
+
 <% @sharespace_venue.sharespaces.each do |sharespace| %>
 <div class="sharespace">
   <div><%= profile_photo_display(sharespace, "thumb_photo") %></div>
@@ -52,19 +80,3 @@
   <%= link_to 'Show', sharespace %>
 </div>
 <% end %>
-<td><iframe
-  width="250"
-  height="250"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
-    &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
-</iframe></td>
-<h3> Upload an awesome photo for your awesome listing!</h3>
-<% if user_signed_in? %>
-  <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if current_user.can_update?(@sharespace_venue) %>
-
-  <%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) if current_user.can_update?(@sharespace_venue) %>
-
-  <%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) if current_user.can_update?(@sharespace_venue) %>
-<% end %>
-<%= link_to 'Back', sharespace_venues_path %>

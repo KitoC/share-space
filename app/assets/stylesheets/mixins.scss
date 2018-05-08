@@ -9,6 +9,36 @@
   }
 }
 
+
+@mixin link
+{
+  float: left;
+  display: block;
+  text-decoration: none;
+  font-size: 1.5em;
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  padding: 0 0.6em;
+  -webkit-transition: font-size 1s; /* For Safari 3.1 to 6.0 */
+  transition: margin-top 1s;
+}
+@mixin bluebar($height)
+{
+  background: $primary;
+  color: white;
+  display: flex;
+  justify-content: center;
+  height: $height;
+}
+
+@mixin image_div
+{
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
 @mixin border( $border-width: 0, $type: none, $border-color: none, $bottom-left: 0, $bottom-right: 0, $top-left: 0, $top-right: 0, )
 {
   border-width: $border-width;

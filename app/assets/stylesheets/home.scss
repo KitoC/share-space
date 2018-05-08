@@ -22,7 +22,7 @@
   align-self: center;
   z-index: 10;
   width: 50%;
-  height: 20%;
+  height: 22.5%;
   background: $primary_faded;
 }
 .blue_box h1
@@ -33,25 +33,20 @@
 }
 .search_bar
 {
-  @include width-height(50%, 3em);
+  @include width-height(21em, 3em);
   @include border(0, none, none, 5px, 0, 0, 5px);
   padding: 0 0.5em;
 }
 .search_button
 {
   background-color: $light;
-  @include width-height(12.5%, 3em);
+  @include width-height(6em, 3em);
   @include border(0, none, none, 0,5px, 5px, 0);
 }
 
-.page_contents
-{
-  width: 100%;
-  padding: 0 10%;
-  box-sizing: border-box;
-}
-// Featured sharespaces
-.featured
+// Featured items
+
+.tiles
 {
   width: 100%;
   display: flex;
@@ -63,8 +58,8 @@
 }
 .item
 {
-  margin: 20px;
-  @include width-height(25%, 16em);
+  margin: 2vw;
+  @include width-height(180px, 280px);
 }
 .item h4
 {
@@ -74,7 +69,7 @@
 {
   margin: 2px 0;
 }
-.SharespaceVenue_image
+.tile_image
 {
 
   @include width-height(180px, 180px);
