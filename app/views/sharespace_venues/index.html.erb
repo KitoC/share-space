@@ -34,6 +34,7 @@
   <h3>Share-Spaces.</h3>
 
   <div class="tiles_ss_page">
+<% if @addresses != nil %>
   <% @addresses.each do |address| listing = address.addressable %>
       <div class="item_ss_page">
         <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
@@ -61,6 +62,7 @@
 
 
   <% end %>
+<% end %>
 </div>
 
 
