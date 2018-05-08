@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= current_user.sharespace_venues.last.name %>
+    <%= SharespaceVenue.find(params[:id]).name %>
     <%= form.hidden_field :sharespace_venue_id, value: SharespaceVenue.find(params[:id]).id, id: :sharespace_sharespace_venue_id %>
   </div>
 

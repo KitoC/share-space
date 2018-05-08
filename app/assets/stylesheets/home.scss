@@ -61,6 +61,11 @@
   margin: 2vw;
   @include width-height(180px, 280px);
 }
+.item p
+{
+  margin: 2px 0;
+  opacity: 0.6;
+}
 .item h4
 {
   margin: 2px 0;
@@ -71,6 +76,10 @@
 }
 .tile_image
 {
-
-  @include width-height(180px, 180px);
+  @include image_div;
+  @include width-height(160px, 160px);
+}
+.tile_image img
+{
+  height: 100%;
 }

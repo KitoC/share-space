@@ -141,10 +141,8 @@ ActiveRecord::Schema.define(version: 20180507014722) do
   create_table "sharespace_venues", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.string "brief_description"
     t.text "description"
     t.text "rules"
-    t.integer "overall_rating"
     t.text "surrounding_area_description"
     t.integer "profile_photo"
     t.datetime "created_at", null: false
@@ -187,7 +185,6 @@ ActiveRecord::Schema.define(version: 20180507014722) do
     t.string "emergency_contact_relationship"
     t.string "gender"
     t.integer "profile_photo"
-    t.integer "overall_rating"
     t.bigint "occupation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["occupation_id"], name: "index_users_on_occupation_id"

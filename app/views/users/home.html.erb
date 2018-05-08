@@ -17,7 +17,7 @@
     <% count = 5 %>
     <% until count == 0 %>
     <div class="item">
-      <%= image_tag("default-image.png", class: "tile_image") %>
+      <div class="tile_image"><%= image_tag("default-image.png") %></div>
       <h4>Co-space name</h4>
       <p>Price</p>
       <p>Rating</p>
@@ -32,10 +32,10 @@
     <% count = 5 %>
     <% until count == 0 %>
     <div class="item">
-      <%= image_tag("default-image.png", class: "tile_image") %>
+      <div class="tile_image"><%= image_tag("default-image.png") %></div>
       <h4>Project name</h4>
-      <p>Project brief:</p>
-      <p>Lorem ipsum dolor sit ...</p>
+      <p><strong>Project brief</strong></p>
+      <p><%= short_description(nil) %></p>
     </div>
     <% count -= 1 %>
     <% end %>
@@ -47,9 +47,9 @@
     <% count = 5 %>
     <% until count == 0 %>
     <div class="item">
-      <%= image_tag("default-image.png", class: "tile_image") %>
+      <div class="tile_image"><%= image_tag("default-image.png") %></div>
       <h4>Blog title</h4>
-      <p>Lorem ipsum dolor sit ...</p>
+      <p><%= short_description(nil) %></p>
     </div>
     <% count -= 1 %>
     <% end %>

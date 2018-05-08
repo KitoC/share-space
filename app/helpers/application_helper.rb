@@ -23,7 +23,7 @@ module ApplicationHelper
       object.reviews.each do |review|
         array.push(review.rating)
       end
-      return "Rating: #{(array.inject{ |sum, el| sum + el }.to_f / array.size).to_i}"
+      return (array.inject{ |sum, el| sum + el }.to_f / array.size).to_i
     else
       if object.class.name == "SharespaceVenue"
         "No reviews yet."
@@ -33,7 +33,14 @@ module ApplicationHelper
     end
   end
 
-
+  # This method returns the first 10 characters of an objects description if needed for a brief description.
+  def short_description(description)
+    if description != nil
+      "#{description[0..10]}..."
+    else
+      "No description yet..."
+    end
+  end
 
   def featured_item
     count = 5
@@ -41,6 +48,31 @@ module ApplicationHelper
       count -+ 1
     end
   end
+
+  # This method sets an address placeholder if the user hasn't updated their address yet.
+  def address(object)
+    if object.address.vague_address == nil
+      "No address provided."
+    else
+      object.address.vague_address
+    end
+  end
+
+  # This method calculated the price range of a share space listing
+  def price_range(object)
+    if object.sharespaces != nil
+      if object.sharespaces.order(cost: :desc).first.cost == 0.0 or nil
+        "Free"
+      else
+        "From $#{object.sharespaces.order(cost: :desc).first.cost}"
+      end
+
+    else
+      "No sharespaces yet."
+    end
+  end
+
+
 
 
 end

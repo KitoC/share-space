@@ -10,6 +10,10 @@ class Address < ApplicationRecord
     end
   end
   def vague_address
-    "#{city_suburb} #{state}"
+    if city_suburb && state != nil
+    "#{city_suburb}, #{state}"
+    else
+      nil
+    end
   end
 end
