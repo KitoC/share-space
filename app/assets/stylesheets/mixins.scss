@@ -8,21 +8,27 @@
     color: darken($color, 30%);
   }
 }
-
-
-@mixin link
+// Generic flexbox
+@mixin flexbox($justify, $align)
+{
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+// Link styling
+@mixin link($size)
 {
   float: left;
   display: block;
   text-decoration: none;
-  font-size: 1.5em;
+  font-size: $size;
   text-decoration: none;
   text-align: center;
-  color: white;
   padding: 0 0.6em;
   -webkit-transition: font-size 1s; /* For Safari 3.1 to 6.0 */
   transition: margin-top 1s;
 }
+// Reusable bluebar
 @mixin bluebar($height)
 {
   background: $primary;

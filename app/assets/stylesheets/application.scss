@@ -33,144 +33,102 @@ input::-webkit-calendar-picker-indicator{
     display: none;
 }
 
-
 input[type="date"]::-webkit-input-placeholder{
     visibility: hidden !important;
 }
 a
 {
-  text-decoration: none;
-  color: black;
+
 }
-a:visited
-{
-  color: black;
-}
+
 .checked_star {
     color: orange;
 }
-.profile_photo
+
+#nav_two
 {
-  height: 200px;
-  width: 200px;
-}
-
-.thumb_photo
-{
-  height: 100px;
-  width: 100px;
-}
-
-
-
-.nav_box
-{
-  // background: #6ACBEA;
-  @include bluebar(6%)
-}
-.navbar
-{
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-  width: 80%;
-}
-
-/* Style the links inside the navigation bar */
-.navbar a {
-  @include link
-  {}
-
-    &:not(:first-child) {@include breakpoint($phone)
-      {display: none;}
-    }
-    &.user_align
-    {
-      float: right;
-    }
-    &.admin
-    {
-      float: right;
-      color: #D34C30;
-    }
-    &.booking
-    {
-      position: relative;
-      float: right;
-      color: #D34C30;
-      border: solid #D34C30 2px;
-      padding: 0.25rem 0.15em;
-      border-radius: 5px;
-      top: 0.75rem;
-      width: 6em;
-    }
-    &.home
-    {
-      padding-left: 0;
-    }
-    &.profile
-    {
-
-    }
-    &:last-child
-    {
-      margin-right: 100px;
-    }
-}
-.justify-end {
-  margin-left: auto;
-}
-
-
-
-/* Change the color of links on hover and add a slight animation. */
-.navbar a:hover:not(.icon) {
-    color: $dark;
-    margin-top: -0.15em;
-    @include breakpoint($phone)
-    {
-      margin-top: 0;
-    }
-}
-/* Change the color of links on hover */
-
-.icon:hover
-{
-  color: $dark;
-}
-
-/* Add an active class to highlight the current page */
-.active {
-    color: $dark;
-}
-
-/* Hide the link that should open and close the topnav on small screens */
-.navbar a.icon {
   display: none;
   @include breakpoint($phone)
   {
-    float: right;
     display: block;
+  }
+}
+.nav_box
+{
+  a:hover
+  {
+    margin-top: -0.2em;
+    color: $dark;
+    @include breakpoint($phone)
+    {margin-top: 0;}
+  }
+  a
+  {
+    text-decoration: none;
+    color: white;
+    @include link($link_large);
+  }
+  // background: #6ACBEA;
+  @include bluebar(6%);
+  @include flexbox(space-between, center);
+  padding: 0 10%;
+  .sharespace_title
+  {
+    display: none;
+
+    }
+  @include breakpoint($phone)
+  {
+    padding: 0 5%;
+    p{display: block;}
+    #nav_one{display: none;}
+  }
+  .icon
+  {
+    display: none;
+    @include breakpoint($phone)
+    {
+      display: block;
+    }
+  }
+}
+.navbar
+{
+  width: 100%;
+  @include flexbox(space-around, center);
+  .sharespace
+  {
+    margin-right: auto;
+  }
+  a
+  {
+    @include breakpoint($phone)
+    {
+      display: none;
+    }
+  }
+  &.responsive
+  {
+    @include breakpoint($phone)
+    {
+      position:absolute;
+      @include flexbox(flex-start, flex-start);
+      flex-direction: column;
+      flex-wrap: wrap;
+      background-color: $dark;
+      padding: $padding_small 5%;
+      z-index: 20;
+      box-sizing: border-box;
+      a{width: 100%;
+        box-sizing: border-box;
+        margin: $margin_small 0;
+        display: block;}
+
+    }
   }
 }
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
-@media screen and (max-width: $phone) {
-  .navbar.responsive {position: relative;}
-  .navbar.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .navbar.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-// Unirform page alignment
+// Uniform page alignment
 .page_contents
 {
   width: 100%;

@@ -11,6 +11,8 @@
   overflow: hidden;
   position: fixed;
   padding: 1%;
+
+
 }
 
 .listings
@@ -19,6 +21,10 @@
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  a{
+    text-decoration: none;
+    color: black;
+   }
 }
 .listing
 {
@@ -32,22 +38,25 @@
   height: 100%;
 }
 /* Optional: Makes the sample page fill the window. */
-.new_sharespace
-{
-  @include link
-  {}
-}
+
 .nav_box_ss_page
 {
   @include bluebar(7%)
 }
-.new_sharespace:hover {
-    color: $dark;
-    margin-top: -0.15em;
-    @include breakpoint($phone)
-    {
-      margin-top: 0;
+.new_sharespace
+{
+  text-decoration: none;
+  color: white;
+  @include link($link_large);
+   &:hover
+   {
+      color: $dark;
+      margin-top: -0.2em;
     }
+      @include breakpoint($phone)
+      {
+        margin-top: 0;
+      }
 }
 
 // Listings
@@ -93,10 +102,20 @@ h3
 {
   @include image_div;
   @include width-height(160px, 160px);
+  img
+  {
+    height: 100%;
+  }
 }
-.tile_ss_page_image img
+
+.ss_image_show
 {
-  height: 100%;
+  @include image_div;
+  @include width-height(120px, 120px);
+  img
+  {
+    height: 100%;
+  }
 }
 
 .main_image
@@ -127,6 +146,33 @@ h3
   justify-content: space-around;
   padding: 0 20%;
   box-sizing: border-box;
+}
+//Share space tiles
+.ss_section
+{
+  h5
+  {
+    margin: $margin_small 0;
+  }
+  a{
+    text-decoration: none;
+    color: black;
+   }
+}
+.sharespace_tiles
+{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+
+}
+
+.sharespace
+{
+  margin: $margin_small;
+  margin-left: 0;
 }
 // Left side
 .left

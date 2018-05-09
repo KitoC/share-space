@@ -1,14 +1,19 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
+.page_contents
+{
+  a
+  {
+    text-decoration: none;
+    color: white;
+    @include link($link_large);
+  }
+}
 .landing_page
 {
   display: flex;
   justify-content: center;
-
-
 }
 .landing_image
 {

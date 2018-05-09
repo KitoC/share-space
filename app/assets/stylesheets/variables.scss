@@ -9,9 +9,26 @@ $blue: #0088ff;
 $green: lightgreen;
 $button-width: 300px;
 
+// Breakpoints
 $phone: 600px;
+
+// Colors
 $primary: #56C0DB;
-$primary_faded: rgba(86,192,219,0.9);
 $dark: #3F565B;
-$dark_faded: rgba(80,100,106,0.7);
 $light: #B3DFED;
+// Faded colors (opacity)
+$primary_faded: rgba(86,192,219,0.9);
+$dark_faded: rgba(80,100,106,0.7);
+
+// Sizings
+$link_large: 1.5rem;
+$link_medium: 1rem;
+$link_small: 0.5rem;
+
+$padding_large: 1.5rem;
+$padding_medium: 1rem;
+$padding_small: 0.5rem;
+
+$margin_large: 1.5rem;
+$margin_medium: 1rem;
+$margin_small: 0.5rem;

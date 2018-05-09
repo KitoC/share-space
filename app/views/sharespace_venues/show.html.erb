@@ -26,10 +26,12 @@
   <% end %>
 </div>
 
+
+
 <div class="split_grid">
   <div class="left">
     <div class="summary listing_info">
-      <p> type (placeholder)</p>
+      <p>Type-placeholder</p>
       <h1><%= @sharespace_venue.name %></h1>
       <h4><%= @sharespace_venue.address.vague_address %></h4>
       <p><%= "#{@sharespace_venue.user.first_name} #{@sharespace_venue.user.last_name}" %></p>
@@ -57,6 +59,22 @@
  </div>
 
 <div class="right">
+
+  <div class="ss_section">
+    <h5 style="margin: 0;">Share-Spaces</h5>
+    <div class="sharespace_tiles">
+      <% @sharespace_venue.sharespaces.each do |sharespace| %>
+      <div class="sharespace">
+        <div class="ss_image_show"><%= link_to (profile_photo_display(sharespace, "thumb_photo")), sharespace %></div>
+        <h5 style="margin-bottom: 0;"><%= link_to sharespace.space_type, sharespace %></h5>
+        <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_sharespace_venue_path(sharespace) if current_user.can_update?(@sharespace_venue) %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
   <td>
     <iframe
     width="100%"
@@ -66,17 +84,8 @@
       &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
     </iframe>
   </td>
-</div>
+
 
 </div>
 
-<% @sharespace_venue.sharespaces.each do |sharespace| %>
-<div class="sharespace">
-  <div><%= profile_photo_display(sharespace, "thumb_photo") %></div>
-  <h5 style="margin-bottom: 0;"><%= link_to sharespace.space_type, sharespace %></h5>
-  <% if user_signed_in? %>
-    <%= link_to 'Edit', edit_sharespace_venue_path(sharespace) if current_user.can_update?(@sharespace_venue) %>
-  <% end %>
-  <%= link_to 'Show', sharespace %>
 </div>
-<% end %>
