@@ -33,10 +33,10 @@ module ApplicationHelper
     end
   end
 
-  # This method returns the first 10 characters of an objects description if needed for a brief description.
+  # This method returns the first 25 characters of an objects description if needed for a brief description.
   def short_description(description)
     if description != nil
-      "#{description[0..10]}..."
+      "#{description[0..25]}..."
     else
       "No description yet..."
     end
