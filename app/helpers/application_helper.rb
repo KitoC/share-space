@@ -31,6 +31,9 @@ module ApplicationHelper
         "No reviews yet."
       end
     end
+
+
+
   end
 
   # This method returns the first 25 characters of an objects description if needed for a brief description.

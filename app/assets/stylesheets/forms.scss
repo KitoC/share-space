@@ -1,0 +1,112 @@
+
+// Formtastic overrides
+.inputs
+{
+  border: none;
+  color: white;
+  ol
+  {
+    padding: 0 0.5rem;
+    list-style: none;
+    margin-top: 0;
+    margin-bottom: 0;
+    li
+    {
+      display: flex;
+      margin-bottom: 0.3rem;
+      flex-direction: column;
+
+      label
+      {
+        margin-bottom: 0.2rem;
+        border-radius: 5px;
+      }
+      input
+      {
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+.actions
+{
+  border: none;
+  height: 3.5rem;
+
+  ol
+  {
+    padding: 0 0.5rem;
+    list-style: none;
+    margin-top: 0;
+    li
+    {
+
+    }
+  }
+}
+.button_fl
+{
+  border-radius: 5px;
+  border: none;
+  background-color: $dark;
+  color: white;
+  width: 100%;
+  height: 3rem;
+}
+.text_box_m
+{
+  height: 4rem;
+  border-radius: 5px;
+  border: none;
+}
+
+
+
+
+// Rendered form popups
+.form_bg
+{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  opacity: 0.2;
+  position:fixed;
+  z-index: 10;
+  padding: 0 20%;
+}
+.form_container
+{
+  padding: 0 30%;
+}
+.form_render
+{
+  z-index: 100;
+  position: fixed;
+  opacity: 1;
+  background-color: $secondary;
+  border-radius: 7.5px;
+  top: 40%;
+  width: 40%;
+  box-sizing: border-box;
+}
+.button_box
+{
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 0.5rem;
+}
+.close_form
+{
+  cursor:pointer;
+  z-index: 100;
+  margin: 0.1em;
+  font-size: 1.5rem;
+}
+
+.hide
+{
+  display: none;
+}

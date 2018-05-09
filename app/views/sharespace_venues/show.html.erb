@@ -13,79 +13,147 @@
 <div class="main_image bgimg" >
 </div>
 
-<div class="tool_bar">
-  <% if user_signed_in? %>
-    <%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue} ) if current_user.can_update?(@sharespace_venue) %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if current_user.can_update?(@sharespace_venue) %>
-
-    <%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address) if current_user.can_update?(@sharespace_venue) %>
-
-    <%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue) if current_user.can_update?(@sharespace_venue) %>
-  <% end %>
-</div>
 
 
+<main class="main_section">
 
-<div class="split_grid">
-  <div class="left">
-    <div class="summary listing_info">
-      <p>Type-placeholder</p>
-      <h1><%= @sharespace_venue.name %></h1>
-      <h4><%= @sharespace_venue.address.vague_address %></h4>
-      <p><%= "#{@sharespace_venue.user.first_name} #{@sharespace_venue.user.last_name}" %></p>
-      <p><%= rating_average(@sharespace_venue) %></p>
-    </div>
-    <div class="details listing_info">
-      <p>
-        <strong>Description</strong>
-        <%= @sharespace_venue.description %>
-      </p>
-    </div>
+  <div class="tool_bar">
+    <% if user_signed_in? %>
+      <%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue}), class: "tools" if current_user.can_update?(@sharespace_venue) %>
+    <% end %>
+    <% if user_signed_in? %>
 
-    <div class="rules listing_info">
-      <p>
-        <strong>Rules</strong>
-        <%= @sharespace_venue.rules %>
-      </p>
-    </div>
-    <div class="surrounding_area_description listing_info">
-      <p>
-        <strong>Surrounding area</strong>
-        <%= @sharespace_venue.surrounding_area_description %>
-      </p>
-    </div>
- </div>
+      <p class="tools open_options">Add an image.</p>
+      <%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address), class: "tools" if current_user.can_update?(@sharespace_venue) %>
 
-<div class="right">
-
-  <div class="ss_section">
-    <h5 style="margin: 0;">Share-Spaces</h5>
-    <div class="sharespace_tiles">
-      <% @sharespace_venue.sharespaces.each do |sharespace| %>
-      <div class="sharespace">
-        <div class="ss_image_show"><%= link_to (profile_photo_display(sharespace, "thumb_photo")), sharespace %></div>
-        <h5 style="margin-bottom: 0;"><%= link_to sharespace.space_type, sharespace %></h5>
-        <% if user_signed_in? %>
-          <%= link_to 'Edit', edit_sharespace_venue_path(sharespace) if current_user.can_update?(@sharespace_venue) %>
-        <% end %>
-      </div>
-      <% end %>
-    </div>
+      <%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue), class: "tools" if current_user.can_update?(@sharespace_venue) %>
+    <% end %>
   </div>
 
-  <td>
-    <iframe
-    width="100%"
-    height="250"
-    frameborder="0" style="border:0"
-    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
-      &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
-    </iframe>
-  </td>
+  <div class="split_grid">
+    <div class="left">
+      <div class="summary listing_info">
+        <p>Type-placeholder</p>
+        <h1><%= @sharespace_venue.name %></h1>
+        <h4><%= @sharespace_venue.address.vague_address %></h4>
+        <p><%= "#{@sharespace_venue.user.first_name} #{@sharespace_venue.user.last_name}" %></p>
+        <p><%= rating_average(@sharespace_venue) %></p>
+      </div>
+      <div class="details listing_info">
+        <p>
+          <strong>Description</strong>
+          <%= @sharespace_venue.description %>
+        </p>
+      </div>
+
+      <div class="rules listing_info">
+        <p>
+          <strong>Rules</strong>
+          <%= @sharespace_venue.rules %>
+        </p>
+      </div>
+      <div class="surrounding_area_description listing_info last">
+        <p>
+          <strong>Surrounding area</strong>
+          <%= @sharespace_venue.surrounding_area_description %>
+        </p>
+      </div>
+   </div>
+
+    <div class="right">
+
+      <div class="ss_section">
+        <h5 style="margin: 0;">Share-Spaces</h5>
+        <div class="sharespace_tiles">
+          <% @sharespace_venue.sharespaces.each do |sharespace| %>
+          <div class="sharespace">
+            <div class="ss_image_show"><%= link_to (profile_photo_display(sharespace, "thumb_photo")), sharespace %></div>
+            <h5 style="margin-bottom: 0;"><%= link_to sharespace.space_type, sharespace %></h5>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_sharespace_venue_path(sharespace) if current_user.can_update?(@sharespace_venue) %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <td>
+        <iframe
+        width="100%"
+        height="250"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB8sC_5Vo_Mk5YOxQ9sbeIL6dN6PQNTJus
+          &q=<%= @sharespace_venue.address.full_street_address %>" allowfullscreen>
+        </iframe>
+      </td>
+
+      <div class="review_section">
+        <h5 style="margin: 0;">Reviews</h5>
+        <div class="reviews">
+          <% @sharespace_venue.reviews.order(created_at: :desc).each do |review| %>
+          <div class="review">
+            <h5 style="margin-bottom: 0;"><%= link_to review.reference.user.fullname, review %>
+              <span class="date"><%= review.created_at.strftime("%d %b %Y") %></span></h5>
+
+            <% review_rating = review.rating %>
+            <% anti_rating = 5 - review_rating  %>
+
+            <% until review_rating == 0 %>
+              <span class='fa fa-star checked_star'></span>
+              <% review_rating -= 1 %>
+            <% end %>
+
+            <% until anti_rating == 0 %>
+              <span class='fa fa-star'></span>
+              <% anti_rating -= 1 %>
+            <% end %>
+
+            <p><%= review.review  %></p>
+            <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_review_path(review) if current_user.can_update?(review.reference) %>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
 
 
+
+
+
+<div class="form_container hide">
+  <div class="form_render hide">
+    <div class="button_box"><p class="close_form close_options hide">&times;</p></div>
+    <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if current_user.can_update?(@sharespace_venue) %>
+  </div>
 </div>
 
+<div class="close_form close_options hide" >
 </div>
+<div class="form_bg hide close_options">
+</div>
+
+
+<script>
+$(document).ready(function(){
+  $(".open_options").click(function(){
+    $(".form_render").removeClass('hide')
+    $(".close_form").removeClass('hide')
+    $(".form_container").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+$(document).ready(function(){
+  $(".close_options").click(function(){
+    $(".form_render").addClass('hide')
+    $(".close_form").addClass('hide')
+    $(".form_container").addClass('hide')
+    $(".form_bg").addClass('hide')
+  });
+});
+</script>

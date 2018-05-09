@@ -9,6 +9,7 @@ class Address < ApplicationRecord
       "#{street_num} #{street_name} #{street_type}, #{city_suburb}, #{state}"
     end
   end
+
   def vague_address
     if city_suburb && state != nil
     "#{city_suburb}, #{state}"

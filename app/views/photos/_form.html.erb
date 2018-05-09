@@ -1,36 +1,12 @@
-<%= form_with(model: photo, local: true) do |form| %>
-  <% if photo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
 
-      <ul>
-      <% photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= semantic_form_for photo do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :image, label: "Upload", input_html: { class: "button" } %>
+    <%= f.input :caption, as: :text, input_html: { class: "text_box_m", placeholder: "Say something witty..." }  %>
+    <%= f.input :photoable_id, as: :hidden, input_html: { value: photoable_object.id  } %>
+    <%= f.input :photoable_type, as: :hidden, input_html: { value: photoable_object.class.name } %>
   <% end %>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image, id: :post_url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :caption %>
-    <%= form.text_field :caption, id: :photo_caption %>
-  </div>
-
-  <div class="field">
-    <%= form.label :photoable_id %>
-    <%= form.hidden_field :photoable_id, value: photoable_object.id %>
-  </div>
-  <div class="field">
-    <%= form.label :photoable_type %>
-    <%= form.hidden_field :photoable_type, value: photoable_object.class.name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.actions do %>
+     <%= f.action :submit, :label => "Upload your image.", button_html: { class: "button_fl" }%>
+   <% end %>
 <% end %>

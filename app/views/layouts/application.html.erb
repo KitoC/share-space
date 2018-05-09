@@ -23,7 +23,7 @@
     <div class="nav_box">
       <%= link_to 'Home', root_path, class: "home" %>
       <nav class="navbar" id="nav_one">
-        <%= link_to 'Share Spaces', sharespace_venues_path, class: "sharespace" %>
+        <%= link_to 'Share Spaces', sharespace_venues_path, class: "sharespace_nav" %>
         <%= link_to 'Logout', destroy_user_session_path, class: "user_align justify-end", method: :delete if user_signed_in? %>
         <%= link_to 'Login', new_user_session_path, class: "user_align justify-end" if !user_signed_in? %>
         <%= link_to "Profile", profile_url, class: "profile user_align" if user_signed_in? %>

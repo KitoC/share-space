@@ -24,21 +24,25 @@
 {
   text-align: center;
   position: absolute;
-  align-self: center;
   z-index: 10;
-  width: 50%;
-  height: 22.5%;
+  width: 100%;
+  height: 56%;
   background: $primary_faded;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .blue_box h1
 {
-  font-size: 4em;
+  font-size: 6em;
   margin: 15px 0;
   color: white;
 }
 .search_bar
 {
-  @include width-height(21em, 3em);
+  @include width-height(29em, 3em);
   @include border(0, none, none, 5px, 0, 0, 5px);
   padding: 0 0.5em;
 }
@@ -85,6 +89,82 @@
   @include width-height(160px, 160px);
 }
 .tile_image img
+{
+  height: 100%;
+}
+
+
+// Featured listings
+h3
+{
+  margin: 0.25em 0;
+}
+.tiles_ss_page
+{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.search_bar_ss_page
+{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0 2em;
+}
+
+.item_ss_page
+{
+  margin: 0.9vw;
+  @include width-height(180px, 250px);
+  background-color: white;
+  padding: $padding_small;
+  box-shadow: 1.5px 3px 10px #888888;
+}
+.item_ss_page h4
+{
+  margin: 2px 0;
+}
+.item_ss_page p
+{
+  margin: 2px 0;
+  opacity: 0.6;
+  &:last-child
+  {
+    opacity: 0.2;
+  }
+}
+.tile_ss_page_image
+{
+  @include image_div;
+  @include width-height(180px, 160px);
+  img
+  {
+    height: 100%;
+  }
+}
+
+.ss_image_show
+{
+  @include image_div;
+  @include width-height(120px, 120px);
+  img
+  {
+    height: 100%;
+  }
+}
+
+.main_image
+{
+  @include image_div;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: 50% 50% !important;
+  @include width-height(100%, 65%);
+}
+.main_image img
 {
   height: 100%;
 }

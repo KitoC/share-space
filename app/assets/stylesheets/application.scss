@@ -16,7 +16,7 @@
  @import 'albums';
  @import 'home';
  @import 'sharespace_venues';
-
+ @import 'forms';
 
 html
 {
@@ -28,6 +28,7 @@ body
   font: 1em $font-family;
   height: 100%;
   margin: 0;
+  background-color: $light_faded;
 }
 input::-webkit-calendar-picker-indicator{
     display: none;
@@ -40,7 +41,10 @@ a
 {
 
 }
-
+.date
+{
+  color: $dark_faded;
+}
 .checked_star {
     color: orange;
 }
@@ -95,8 +99,8 @@ a
 .navbar
 {
   width: 100%;
-  @include flexbox(space-around, center);
-  .sharespace
+  @include flexbox(flex-end, center);
+  .sharespace_nav
   {
     margin-right: auto;
   }

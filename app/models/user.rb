@@ -37,6 +37,20 @@ class User < ApplicationRecord
     self.has_role?(:admin) or (self.has_role?(:basic) && object.user == self) or self.has_role?(:moderator)
   end
 
+  def fullname
+    if first_name && last_name != nil
+      "#{first_name} #{last_name}"
+    elsif first_name != nil && last_name == nil
+      "#{first_name}"
+    elsif first_name == nil && last_name != nil
+      "#{last_name}"
+    else
+      "User has no name."
+   end
+  end
+
+
+
   private
 # This method runs multiple methods for the "after_create" method that runs the methods once a new user has signed up.
   def tasks

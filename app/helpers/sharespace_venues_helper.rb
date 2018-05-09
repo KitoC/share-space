@@ -1,5 +1,5 @@
 module SharespaceVenuesHelper
 
 
-  
+
 end

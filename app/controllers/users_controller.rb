@@ -7,7 +7,11 @@ class UsersController < ApplicationController
 
   def admin
     authorization("admin")
-    
+
+  end
+
+  def home
+    @featured_ss = SharespaceVenue.order(overall_rating: :desc, created_at: :desc)
   end
 
   def profile

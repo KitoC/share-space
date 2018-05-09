@@ -13,48 +13,102 @@
 <div class="page_contents">
 
   <h3>Featured Share-Spaces</h3>
-  <div class="tiles">
-    <% count = 5 %>
-    <% until count == 0 %>
-    <div class="item">
-      <div class="tile_image"><%= image_tag("default-image.png") %></div>
-      <h4>Co-space name</h4>
-      <p>Price</p>
-      <p>Rating</p>
-    </div>
-    <% count -= 1 %>
-    <% end %>
+  <div class="tiles_ss_page">
+  <% if @addresses != nil %>
+  <% @addresses.each do |address| listing = address.addressable %>
+      <div class="item_ss_page">
+        <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
+        <h4><%= link_to listing.name, listing %></h4>
+        <p style="margin-top: 0;"><%= link_to address(listing), listing %></p>
+        <p><%= price_range(listing) %></p>
+        <% rating = rating_average(address.addressable) %>
+        <% if rating == "No reviews yet." %>
+          <p><%= rating %></p>
+        <% else %>
+          <% anti_rating = 5 - rating  %>
+
+        <% until rating == 0 %>
+          <span class='fa fa-star checked_star'></span>
+          <% rating -= 1 %>
+        <% end %>
+
+          <% until anti_rating == 0 %>
+            <span class='fa fa-star'></span>
+            <% anti_rating -= 1 %>
+          <% end %>
+          <span class="rating_num"><%= listing.reviews.count %></span>
+        <% end %>
+      </div>
+
+
+  <% end %>
+  <% end %>
   </div>
 
   <h3>Featured Projects</h3>
-  <div class="tiles">
+  <div class="tiles_ss_page">
+  <% if @addresses != nil %>
+  <% @addresses.each do |address| listing = address.addressable %>
+      <div class="item_ss_page">
+        <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
+        <h4><%= link_to listing.name, listing %></h4>
+        <p style="margin-top: 0;"><%= link_to address(listing), listing %></p>
+        <p><%= price_range(listing) %></p>
+        <% rating = rating_average(address.addressable) %>
+        <% if rating == "No reviews yet." %>
+          <p><%= rating %></p>
+        <% else %>
+          <% anti_rating = 5 - rating  %>
 
-    <% count = 5 %>
-    <% until count == 0 %>
-    <div class="item">
-      <div class="tile_image"><%= image_tag("default-image.png") %></div>
-      <h4>Project name</h4>
-      <p><strong>Project brief</strong></p>
-      <p><%= short_description(nil) %></p>
-    </div>
-    <% count -= 1 %>
-    <% end %>
+        <% until rating == 0 %>
+          <span class='fa fa-star checked_star'></span>
+          <% rating -= 1 %>
+        <% end %>
 
+          <% until anti_rating == 0 %>
+            <span class='fa fa-star'></span>
+            <% anti_rating -= 1 %>
+          <% end %>
+          <span class="rating_num"><%= listing.reviews.count %></span>
+        <% end %>
+      </div>
+
+
+  <% end %>
+  <% end %>
   </div>
 
-  <h3>Featured Blogs</h3>
-  <div class="tiles">
-    <% count = 5 %>
-    <% until count == 0 %>
-    <div class="item">
-      <div class="tile_image"><%= image_tag("default-image.png") %></div>
-      <h4>Blog title</h4>
-      <p><%= short_description(nil) %></p>
-    </div>
-    <% count -= 1 %>
-    <% end %>
-  </div>
+  <div class="tiles_ss_page">
+  <% if @addresses != nil %>
+  <% @addresses.each do |address| listing = address.addressable %>
+      <div class="item_ss_page">
+        <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
+        <h4><%= link_to listing.name, listing %></h4>
+        <p style="margin-top: 0;"><%= link_to address(listing), listing %></p>
+        <p><%= price_range(listing) %></p>
+        <% rating = rating_average(address.addressable) %>
+        <% if rating == "No reviews yet." %>
+          <p><%= rating %></p>
+        <% else %>
+          <% anti_rating = 5 - rating  %>
 
+        <% until rating == 0 %>
+          <span class='fa fa-star checked_star'></span>
+          <% rating -= 1 %>
+        <% end %>
+
+          <% until anti_rating == 0 %>
+            <span class='fa fa-star'></span>
+            <% anti_rating -= 1 %>
+          <% end %>
+          <span class="rating_num"><%= listing.reviews.count %></span>
+        <% end %>
+      </div>
+
+
+  <% end %>
+  <% end %>
+  </div>
 
 
 </div>
