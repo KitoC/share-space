@@ -58,7 +58,7 @@ module ApplicationHelper
 
   # This method calculated the price range of a share space listing
   def price_range(object)
-    if object.sharespaces != nil
+    if object && object.sharespaces != nil 
       if object.sharespaces.order(cost: :desc).first.cost == 0.0 or nil
         "Free"
       else
