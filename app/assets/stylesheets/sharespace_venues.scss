@@ -42,7 +42,11 @@
 
 .nav_box_ss_page
 {
-  @include bluebar(7%)
+  @include bluebar(7%);
+  display: flex;
+  justify-content:flex-start;
+  padding: 0 $padding_medium;
+  align-items: center;
 }
 .new_sharespace
 {
@@ -60,57 +64,7 @@
       }
 }
 
-// Listings
-h3
-{
-  margin: 0.25em 0;
-}
-.tiles_ss_page
-{
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-.search_bar_ss_page
-{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  padding: 0 2em;
-}
 
-.item_ss_page
-{
-  margin: 0.9vw;
-  @include width-height(180px, 250px);
-  background-color: white;
-  padding: $padding_small;
-  box-shadow: 1.5px 3px 10px #888888;
-}
-.item_ss_page h4
-{
-  margin: 2px 0;
-}
-.item_ss_page p
-{
-  margin: 2px 0;
-  opacity: 0.6;
-  &:last-child
-  {
-    opacity: 0.2;
-  }
-}
-.tile_ss_page_image
-{
-  @include image_div;
-  @include width-height(180px, 160px);
-  img
-  {
-    height: 100%;
-  }
-}
 
 .ss_image_show
 {
@@ -150,7 +104,7 @@ h3
   justify-content: space-around;
   box-sizing: border-box;
   background-color: $dark;
-  box-shadow: 1.5px 3px 10px #888888;
+  @include default_shadow;
 }
 .tools
 {
@@ -179,8 +133,7 @@ h3
   height: 1010px;
   background-color: white;
   padding-top: $padding_small;
-  box-shadow: 1.5px 3px 10px #888888;
-
+  @include default_shadow;
 }
 
 
@@ -239,8 +192,6 @@ h3
   flex-wrap: nowrap;
   overflow-x: scroll;
   padding: 0 2.5%;
-
-
 }
 
 .sharespace
@@ -248,7 +199,7 @@ h3
   margin: $margin_small;
   padding: $padding_small;
   margin-left: 0;
-  box-shadow: 1.5px 3px 10px #888888;
+  @include default_shadow;
   &:last-child
   {
   }

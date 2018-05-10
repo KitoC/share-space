@@ -1,113 +1,41 @@
 
 
-
 <div class="landing_page">
-  <%= image_tag("coworking.jpg", class: "landing_image") %>
-  <div class="blue_box">
-    <h1>Share-Space</h1>
-    <%= render 'search_address' %>
+  <div class="landing_image">
+    <div class="blue_box">
+      <h1>Share-Space</h1>
+        <%= render 'search_address' %>
+    </div>
   </div>
 </div>
-
 
 <div class="page_contents">
 
   <h3>Featured Share-Spaces</h3>
-  <div class="tiles_ss_page">
-  <% if @addresses != nil %>
-  <% @addresses.each do |address| listing = address.addressable %>
-      <div class="item_ss_page">
-        <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
-        <h4><%= link_to listing.name, listing %></h4>
-        <p style="margin-top: 0;"><%= link_to address(listing), listing %></p>
-        <p><%= price_range(listing) %></p>
-        <% rating = rating_average(address.addressable) %>
-        <% if rating == "No reviews yet." %>
-          <p><%= rating %></p>
-        <% else %>
-          <% anti_rating = 5 - rating  %>
-
-        <% until rating == 0 %>
-          <span class='fa fa-star checked_star'></span>
-          <% rating -= 1 %>
-        <% end %>
-
-          <% until anti_rating == 0 %>
-            <span class='fa fa-star'></span>
-            <% anti_rating -= 1 %>
-          <% end %>
-          <span class="rating_num"><%= listing.reviews.count %></span>
-        <% end %>
-      </div>
-
-
-  <% end %>
-  <% end %>
+  <div class="tiles">
+    <% if @addresses != nil %>
+      <% @addresses.each do |address| listing = address.addressable %>
+        <%= render partial: 'sharespace_venues/tiles', :locals => {:listing => listing} %>
+      <% end %>
+    <% end %>
   </div>
 
   <h3>Featured Projects</h3>
-  <div class="tiles_ss_page">
-  <% if @addresses != nil %>
-  <% @addresses.each do |address| listing = address.addressable %>
-      <div class="item_ss_page">
-        <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
-        <h4><%= link_to listing.name, listing %></h4>
-        <p style="margin-top: 0;"><%= link_to address(listing), listing %></p>
-        <p><%= price_range(listing) %></p>
-        <% rating = rating_average(address.addressable) %>
-        <% if rating == "No reviews yet." %>
-          <p><%= rating %></p>
-        <% else %>
-          <% anti_rating = 5 - rating  %>
-
-        <% until rating == 0 %>
-          <span class='fa fa-star checked_star'></span>
-          <% rating -= 1 %>
-        <% end %>
-
-          <% until anti_rating == 0 %>
-            <span class='fa fa-star'></span>
-            <% anti_rating -= 1 %>
-          <% end %>
-          <span class="rating_num"><%= listing.reviews.count %></span>
-        <% end %>
-      </div>
-
-
-  <% end %>
-  <% end %>
+  <div class="tiles">
+    <% if @addresses != nil %>
+      <% @addresses.each do |address| listing = address.addressable %>
+        <%= render partial: 'sharespace_venues/tiles', :locals => {:listing => listing} %>
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="tiles_ss_page">
-  <% if @addresses != nil %>
-  <% @addresses.each do |address| listing = address.addressable %>
-      <div class="item_ss_page">
-        <div class="tile_ss_page_image"><%=  link_to (profile_photo_display(address.addressable, "medium")), listing %></div>
-        <h4><%= link_to listing.name, listing %></h4>
-        <p style="margin-top: 0;"><%= link_to address(listing), listing %></p>
-        <p><%= price_range(listing) %></p>
-        <% rating = rating_average(address.addressable) %>
-        <% if rating == "No reviews yet." %>
-          <p><%= rating %></p>
-        <% else %>
-          <% anti_rating = 5 - rating  %>
-
-        <% until rating == 0 %>
-          <span class='fa fa-star checked_star'></span>
-          <% rating -= 1 %>
-        <% end %>
-
-          <% until anti_rating == 0 %>
-            <span class='fa fa-star'></span>
-            <% anti_rating -= 1 %>
-          <% end %>
-          <span class="rating_num"><%= listing.reviews.count %></span>
-        <% end %>
-      </div>
-
-
-  <% end %>
-  <% end %>
+  <h3>Featured Blogs</h3>
+  <div class="tiles">
+    <% if @addresses != nil %>
+      <% @addresses.each do |address| listing = address.addressable %>
+        <%= render partial: 'sharespace_venues/tiles', :locals => {:listing => listing} %>
+      <% end %>
+    <% end %>
   </div>
 
 

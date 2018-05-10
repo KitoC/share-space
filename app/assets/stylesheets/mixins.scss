@@ -37,14 +37,18 @@
   justify-content: center;
   height: $height;
 }
-
+// Image alignment
 @mixin image_div
 {
   display: flex;
   justify-content: center;
   overflow: hidden;
 }
-
+// Box shadow default
+@mixin default_shadow
+{
+  box-shadow: 1.5px 3px 10px #888888;
+}
 @mixin border( $border-width: 0, $type: none, $border-color: none, $bottom-left: 0, $bottom-right: 0, $top-left: 0, $top-right: 0, )
 {
   border-width: $border-width;

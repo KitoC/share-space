@@ -29,6 +29,7 @@ body
   height: 100%;
   margin: 0;
   background-color: $light_faded;
+  overflow-x: hidden;
 }
 input::-webkit-calendar-picker-indicator{
     display: none;
@@ -59,6 +60,10 @@ a
 }
 .nav_box
 {
+  // background: #6ACBEA;
+  @include bluebar(6%);
+  @include flexbox(space-between, center);
+  padding: 0 10%;
   a:hover
   {
     margin-top: -0.2em;
@@ -72,10 +77,11 @@ a
     color: white;
     @include link($link_large);
   }
-  // background: #6ACBEA;
-  @include bluebar(6%);
-  @include flexbox(space-between, center);
-  padding: 0 10%;
+  .booking
+  {
+    color: $warning;
+    font-weight: bold;
+  }
   .sharespace_title
   {
     display: none;
@@ -123,14 +129,27 @@ a
       padding: $padding_small 5%;
       z-index: 20;
       box-sizing: border-box;
-      a{width: 100%;
+
+      a
+      {
+        width: 100%;
         box-sizing: border-box;
         margin: $margin_small 0;
-        display: block;}
+        display: block;
+        color: white;
+        @include link($link_medium);
+      }
+      .booking
+      {
+        color: $warning;
+        font-weight: bold;
+
+      }
 
     }
   }
 }
+
 
 // Uniform page alignment
 .page_contents
@@ -138,4 +157,75 @@ a
   width: 100%;
   padding: 0 10%;
   box-sizing: border-box;
+}
+
+// Listings
+h3
+{
+  margin: 0.25em 0;
+}
+.tiles
+{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  a
+  {
+    @include link($link_medium);
+    color: black;
+  }
+}
+
+.item
+{
+  margin: 0.9vw;
+  @include width-height(180px, 250px);
+  background-color: white;
+  padding: $padding_small;
+  @include default_shadow;
+}
+.item h4
+{
+  margin: 2px 0;
+}
+.item p
+{
+  margin: 2px 0;
+  opacity: 0.6;
+  &:last-child
+  {
+    opacity: 0.2;
+  }
+}
+.tile_image
+{
+  @include image_div;
+  @include width-height(180px, 160px);
+  img
+  {
+    height: 100%;
+  }
+}
+.item_list
+{
+  margin: 0;
+  padding-top: $padding_small;
+  padding-left: 0;
+  list-style: none;
+
+  li
+  {
+    a
+    {
+      text-align: left;
+      width: 100%;
+      padding: 0;
+    }
+    &:first-child
+    {
+      a
+      {font-weight: bold;}
+    }
+  }
 }

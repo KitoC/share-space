@@ -21,7 +21,7 @@
 * ~~ERD~~
 * Design Decisions
 * Agile Workflow Timetable
-* Get Signed Off
+
 
 -----------------------
 
@@ -33,10 +33,11 @@
 5. Wireframing
 6. Workflow Diagram
 7. Entity Relationship Diagram
-8. List of Tools Used
-9. Project Plan
-10. Future Updates
-11. Challenges
+8. Design decisions
+9. List of Tools Used
+10. Project Plan
+11. Future Updates
+12. Challenges
 
 
 -----------------------
@@ -92,13 +93,15 @@ Configuration - you will not have an ENV file as this has been ignored through G
 1. Clone the repo then change into the directory.
 2. Run **bundle install** in terminal.
    - If you are using windows, run **gem uninstall bcrypt** in CLI and select option 2 (To Uninstall ...x86-mingw32)
-3. Run **rails db:migrate** in terminal.
-4. Create a .env file in the root of the directory, then add your own ENV variables :
+3. Run **rails db:create**(To build the database.) **rails db:migrate**(TO generate the tables) in terminal.
+4. Run **db:seed** to populate the website.
+5. Create a .env file in the root of the directory, then add your own ENV variables :
    - `STRIPE_PUBLISHABLE_KEY=XXXX`
    - `STRIPE_SECRET_KEY=XXXX`
    - `POSTGRES_PASSWORD=XXXX`
    - `MAILGUN_API_KEY=XXXX`
    - `MAILGUN_DOMAIN_KEY=XXXX`
+6. Launch the server, crack a beer while you are waiting for it to load and enjoy watching the $$$ roll in!
 
  -----------------------
  ## 3. Requirements
@@ -146,56 +149,63 @@ Configuration - you will not have an ENV file as this has been ignored through G
  -----------------------
 
  ## 6. Workflow Diagram
- ![This is the Workflow]()
+ ![This is the Workflow](DOCS/Diagrams/User-Flow.jpg)
 
  -------------
 
  ## 7. Entity Relationship Diagram
- ![This is the ERD](DOCS/ERD/ERD.jpg)
+ ![This is the ERD](DOCS/Diagrams/ERD.jpg)
 
  ----------------
 
- ## 8. List of Tools Used
+  ## 8. Design decisions
+  I chose to go with a light blue color scheme as most research says that the color blue is synonymous with trust and confidence. I went for a lighter shade to represent a youthful presence. I wanted the website to be accessible to both corporate and artistic people.
+
+  ![Color theme](DOCS/Color_Choice.jpg)
+
+  ----------------
+ ## 9. List of Tools Used
  1. Github - Version control, user stories and to assign story points for project management.
  2. [Draw](https://www.draw.io) - ERD tool
  3. postgresql - Database
- 4. Devise - authentication gem
- 5. Devise-Bootstrap-Views - Devise Styling
- 6. Cloudinary - Cloud image hosting gem
- 7. Carrierwave - File/Image uploader gem
- 8. Rolify - authorisation gem
- 9. Heroku - Webhosting
- 10. Sendgrid - emails
- 11. Stripe - payments
- 12. Rubocop - code quality ???
- 13. Figma - wireframing
- 15. dotenv-rails - environmental variables
- 16. geocoder - longitude latitude geocoding
- 17. Google Maps - map locations
- 18. activeadmin - admin dashboard ???
- 19. Peer code review ???
+ 4. Heroku - Webhosting
+ 5. Sendgrid - emails
+ 6. Figma - wireframing
+ 7. Google Maps - map locations
+ 8. Peer code review ???
+ 9. [Adobe - Color](https://color.adobe.com)
+
+ Gems used
+  1. Devise - authentication gem
+  2. Cloudinary - Cloud image hosting gem
+  3. Carrierwave - File/Image uploader gem
+  4. Rolify - authorisation gem
+  5. Stripe - payments
+  6. dotenv-rails - environmental variables
+  7. geocoder - longitude latitude geocoding
+
 
  ------------------
 
- ## 9. Project Plan
- ![This is the project Plan]()
+ ## 10. Project Plan
+ ![This is the project Plan](DOCS/Project Plan/1.jpg)
+ ![This is the project Plan](DOCS/Project Plan/2.jpg)
 
  -------------------
- ## 10. Bugs/Future Updates
- 1. If two users are from the same location you can not zoom into the map.
- 2. Conversations path is not viewable.
- 3. I would like to add a function where students can ask an instant question to be answered by a tutor.
- 4. Functions to search by skill and location.
+ ## 11. Bugs/Future Updates
 
+ Future updates
+ 1. Finish implementation of user data
+ 2. Follow through with Project page
+ 3. Implement a messaging system
 
+ Bugs
+ --- No know bugs as of yet...
 
-
- ![This is the landing page](app/assets/images/landing.png)
- ![This is the find a tutor page](app/assets/images/find_a_tutor.png)
- ![This is the tutor sign up page](app/assets/images/tutor_signup.png)
 
  ------------------
 
- ## 11. Challenges
-
- - Bleh
+ ## 12. Challenges
+1. Rendering pages with parameters.
+2. Passing parameters through links
+3. Learning SASS

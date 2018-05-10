@@ -12,6 +12,9 @@
     <%= stylesheet_link_tag    'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places' %>
+
     <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.js' %>
     <%= javascript_include_tag 'https://code.jquery.com/ui/1.12.1/jquery-ui.js' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -35,7 +38,7 @@
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a>
     </div>
     <nav class="navbar" id="nav_two">
-      <%= link_to 'Share Spaces', sharespace_venues_path, class: "sharespace" %>
+      <%= link_to 'Share Spaces', sharespace_venues_path, class: "sharespace_nav" %>
       <%= link_to 'Logout', destroy_user_session_path, class: "user_align justify-end", method: :delete if user_signed_in? %>
       <%= link_to 'Login', new_user_session_path, class: "user_align justify-end" if !user_signed_in? %>
       <%= link_to "Profile", profile_url, class: "profile user_align" if user_signed_in? %>

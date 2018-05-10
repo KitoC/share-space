@@ -1,0 +1,38 @@
+
+
+
+<% if listing.class.name == "SharespaceVenue" %>
+<div class="item">
+  <div class="tile_image">
+    <%=  link_to (profile_photo_display(listing, "medium")), listing %>
+  </div>
+
+  <ul class="item_list">
+    <li><%= link_to listing.name, listing %></li>
+    <li><%= link_to address_check(listing), listing %></li>
+    <li><%= price_range(listing) %></li>
+
+
+    <% rating = rating_average(listing) %>
+    <% if rating == "No reviews yet." %>
+      <li><%= rating %></li>
+    <% else %>
+      <% anti_rating = 5 - rating  %>
+      <li>
+      <% until rating == 0 %>
+        <span class='fa fa-star checked_star'></span>
+        <% rating -= 1 %>
+      <% end %>
+
+      <% until anti_rating == 0 %>
+        <span class='fa fa-star'></span>
+        <% anti_rating -= 1 %>
+      <% end %>
+      <span class="rating_num"><%= listing.reviews.count %></span>
+    <% end %>
+    </li>
+
+    
+  </ul>
+</div>
+<% end %>

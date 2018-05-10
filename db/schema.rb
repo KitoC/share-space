@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20180507014722) do
     t.string "state"
     t.string "postcode"
     t.string "country"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.string "addressable_type"
     t.bigint "addressable_id"
     t.datetime "created_at", null: false
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20180507014722) do
     t.string "space_type"
     t.text "description"
     t.float "cost"
+    t.integer "overall_rating"
     t.integer "profile_photo"
     t.bigint "sharespace_venue_id"
     t.datetime "created_at", null: false
@@ -185,6 +186,7 @@ ActiveRecord::Schema.define(version: 20180507014722) do
     t.string "emergency_contact_relationship"
     t.string "gender"
     t.integer "profile_photo"
+    t.integer "overall_rating"
     t.bigint "occupation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["occupation_id"], name: "index_users_on_occupation_id"

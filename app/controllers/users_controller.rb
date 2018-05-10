@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def home
     @featured_ss = SharespaceVenue.order(overall_rating: :desc, created_at: :desc)
+    @addresses = Address.where(addressable_type: "SharespaceVenue")
   end
 
   def profile
