@@ -49,6 +49,15 @@
 {
   box-shadow: 1.5px 3px 10px #888888;
 }
+// General div styling
+@mixin div_style($margin)
+{
+  @include default_shadow;
+  margin: $margin;
+}
+
+
+
 @mixin border( $border-width: 0, $type: none, $border-color: none, $bottom-left: 0, $bottom-right: 0, $top-left: 0, $top-right: 0, )
 {
   border-width: $border-width;

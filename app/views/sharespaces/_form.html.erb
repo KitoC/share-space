@@ -1,38 +1,17 @@
-<%= form_with(model: sharespace, local: true) do |form| %>
-  <% if sharespace.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sharespace.errors.count, "error") %> prohibited this sharespace from being saved:</h2>
 
-      <ul>
-      <% sharespace.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= semantic_form_for sharespace_new, html: { class: "address_form" } do |f| %>
+
+
+  <%= f.inputs name: "New Share space", id: "" do %>
+
+  <%= f.input :space_type %>
+  <%= f.input :description,  as: :text, input_html: { class: "text_box_m" } %>
+  <%= f.input :cost %>
+  <%= f.input :sharespace_venue_id, as: :hidden, input_html: { value: sharespace_venue  } %>
+
+
   <% end %>
-
-  <div class="field">
-    <%= sharespace_venue.name %>
-    <%= form.hidden_field :sharespace_venue_id, value: sharespace_venue, id: :sharespace_sharespace_venue_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :space_type, id: :sharespace_space_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :sharespace_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :cost %>
-    <%= form.text_field :cost, id: :sharespace_cost %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.actions do %>
+     <%= f.action :submit, :label => "List your venue.", button_html: { class: "button_fl button" }%>
+   <% end %>
 <% end %>

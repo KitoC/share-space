@@ -95,6 +95,7 @@ Configuration - you will not have an ENV file as this has been ignored through G
    - If you are using windows, run **gem uninstall bcrypt** in CLI and select option 2 (To Uninstall ...x86-mingw32)
 3. Run **rails db:create**(To build the database.) **rails db:migrate**(TO generate the tables) in terminal.
 4. Run **db:seed** to populate the website.
+5. Run **rake geocode:all CLASS=Address** in CLI until there are no API query failures.
 5. Create a .env file in the root of the directory, then add your own ENV variables :
    - `STRIPE_PUBLISHABLE_KEY=XXXX`
    - `STRIPE_SECRET_KEY=XXXX`

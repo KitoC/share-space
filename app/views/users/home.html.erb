@@ -13,8 +13,8 @@
 
   <h3>Featured Share-Spaces</h3>
   <div class="tiles">
-    <% if @addresses != nil %>
-      <% @addresses.each do |address| listing = address.addressable %>
+    <% if @featured_ss != nil %>
+      <% @featured_ss.each do |address| listing = address.addressable %>
         <%= render partial: 'sharespace_venues/tiles', :locals => {:listing => listing} %>
       <% end %>
     <% end %>
@@ -22,8 +22,8 @@
 
   <h3>Featured Projects</h3>
   <div class="tiles">
-    <% if @addresses != nil %>
-      <% @addresses.each do |address| listing = address.addressable %>
+    <% if @featured_ss != nil %>
+      <% @featured_ss.each do |address| listing = address.addressable %>
         <%= render partial: 'sharespace_venues/tiles', :locals => {:listing => listing} %>
       <% end %>
     <% end %>
@@ -31,8 +31,8 @@
 
   <h3>Featured Blogs</h3>
   <div class="tiles">
-    <% if @addresses != nil %>
-      <% @addresses.each do |address| listing = address.addressable %>
+    <% if @featured_ss != nil %>
+      <% @featured_ss.each do |address| listing = address.addressable %>
         <%= render partial: 'sharespace_venues/tiles', :locals => {:listing => listing} %>
       <% end %>
     <% end %>

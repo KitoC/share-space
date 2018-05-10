@@ -4,9 +4,8 @@
   </div>
 
 <% if @nearest_me %>
-<p> Your closest listing is <%= link_to @nearest_me.name, sharespace_venues_url(@nearest_me.id) %> in <%= @nearest_me.address.city_suburb %></p>
+<p> Your closest listing is <%= link_to @nearest_me.name, @nearest_me %> in <%= @nearest_me.address.city_suburb %></p>
 <% end %>
- <p style="background:red;"><%= notice %></p>
 <div class="listing_layout">
 <div class="listings">
 

@@ -6,7 +6,7 @@ class Address < ApplicationRecord
 
   def full_street_address
     if city_suburb && state != nil
-      "#{street_num} #{street_name} #{street_type}, #{city_suburb}, #{state}"
+      "#{address_line_one}, #{city_suburb}, #{state}"
     end
   end
 

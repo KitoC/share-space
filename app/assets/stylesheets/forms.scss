@@ -1,5 +1,34 @@
 
 // Formtastic overrides
+input
+{
+  height: 30px;
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  padding: 0 0.2rem;
+  background-color: white;
+}
+select
+{
+  @extend input;
+}
+.devise_buttons
+{
+  color: white;
+  @include link($link_medium);
+  &:hover
+  {
+    color: $dark;
+  }
+}
+textarea
+{
+  margin-bottom: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  padding: 0 0.2rem;
+}
 .inputs
 {
   border: none;
@@ -21,14 +50,54 @@
         margin-bottom: 0.2rem;
         border-radius: 5px;
       }
-      input
-      {
-        margin-bottom: 0.5rem;
-        border-radius: 5px;
-      }
     }
   }
 }
+// Address form customisation
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+legend
+{
+  padding: 0 0.5rem;
+}
+.address_form
+{
+  @include breakpoint($phone)
+  {padding: 0 0;}
+}
+
+#rest
+{
+  ol
+  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+
+    li
+    {
+      width: 32vw;
+    }
+    li:nth-child(3)
+    {
+      width: 16vw;
+    }
+    li:nth-child(4)
+    {
+      width: 8vw;
+    }
+    li:nth-child(5)
+    {
+      width: 8vw;
+    }
+  }
+}
+
+
 .actions
 {
   border: none;
@@ -99,6 +168,16 @@
   {
     width: 95%;
   }
+}
+.form_render_address
+{
+  @extend .form_render;
+    top: 15%;
+}
+.form_render_ss_v
+{
+  @extend .form_render;
+    top: 15%;
 }
 .button_box
 {

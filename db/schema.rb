@@ -16,12 +16,8 @@ ActiveRecord::Schema.define(version: 20180507014722) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.integer "street_num"
-    t.integer "unit_num"
-    t.string "street_name"
-    t.string "street_type"
-    t.string "address_type"
-    t.string "address_identifier"
+    t.string "address_line_one"
+    t.string "address_line_two"
     t.string "city_suburb"
     t.string "state"
     t.string "postcode"

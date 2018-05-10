@@ -1,6 +1,12 @@
 <h1>Editing Address</h1>
 
-<%= render 'form', address: @address %>
+<div class="form_container edit_address">
+  <div class="form_render_address">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= render 'form', address: @address %>
+  </div>
+</div>
+
 
 <%= link_to 'Show', @address %> |
 <%= link_to 'Back', addresses_path %>

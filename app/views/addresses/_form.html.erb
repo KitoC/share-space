@@ -1,21 +1,21 @@
 
 
 
-<%= semantic_form_for address do |f| %>
-  <%= f.inputs do %>
+<%= semantic_form_for address, html: { class: "address_form" } do |f| %>
 
-    <%= f.input :street_num %>
-    <%= f.input :unit_num %>
-    <%= f.input :street_name %>
-    <%= f.input :street_type %>
-    <%= f.input :city_suburb %>
-    <%= f.input :state %>
-    <%= f.input :postcode %>
-    <%= f.input :country %>
+
+  <%= f.inputs name: "", id: "rest" do %>
+
+    <%= f.input :address_line_one %>
+    <%= f.input :address_line_two %>
+    <%= f.input :city_suburb, input_html: { class: "address_fields_city"} %>
+    <%= f.input :state, input_html: { class: "address_fields_state"  } %>
+    <%= f.input :postcode, input_html: { class: "address_fields_postcode"  } %>
+    <%= f.input :country, input_html: { class: "address_fields_country"  } %>
     <%= f.input :addressable_id, as: :hidden, input_html: { value: address.id  } %>
     <%= f.input :addressable_type, as: :hidden, input_html: { value: address.class.name } %>
   <% end %>
   <%= f.actions do %>
-     <%= f.action :submit, :label => "Upload your image.", button_html: { class: "button_fl" }%>
+     <%= f.action :submit, :label => "Enter your address.", button_html: { class: "button_fl button" }%>
    <% end %>
 <% end %>

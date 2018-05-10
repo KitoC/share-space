@@ -6,6 +6,19 @@ class ApplicationController < ActionController::Base
 
 
     protected
+    # Redirects the user to the root path when they sign out.
+    def after_sign_out_path_for(resource_or_scope)
+      root_path
+    end
+    # Keeps the user on the same page when they login
+    def after_sign_in_path_for(resource)
+      sign_in_url = new_user_session_url
+      if request.referer == sign_in_url
+        super
+      else
+        stored_location_for(resource) || request.referer || root_path
+      end
+    end
     # This method allows custom parameters to be passed through and applied too the custom columns setup for the User model through devise.
     def configure_permitted_parameters
       attributes = [:first_name, :last_name, :street_address, :address_id, :overall_rating, :dob, :description, :phone_number, :emergency_contact_name, :emergency_contact_number, :emergency_contact_relationship, :gender_id, :occupation_id, :profile_photo]
@@ -53,7 +66,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    
+
 
 
 end

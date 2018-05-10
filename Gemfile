@@ -72,3 +72,5 @@ gem 'formtastic', '~> 3.0'
 
 # Added at 2018-05-05 17:10:29 +1000 by Kitoc:
 gem "rolify", "~> 5.2"
+
+gem 'country_select'

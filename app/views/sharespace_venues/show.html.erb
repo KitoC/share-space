@@ -133,7 +133,7 @@
 
 <!-- Hidden edit address render -->
 <div class="form_container edit_address hide">
-  <div class="form_render">
+  <div class="form_render_address">
     <div class="button_box"><p class="close_form close_box">&times;</p></div>
     <%= render 'addresses/form', address: @sharespace_venue.address if user_signed_in? && current_user.can_update?(@sharespace_venue) %>
   </div>
@@ -141,17 +141,17 @@
 
 <!-- Hidden edit sharespace_venue render -->
 <div class="form_container edit_venue hide">
-  <div class="form_render">
-    <div class="button_box"><p class="close_form close_add_image">&times;</p></div>
+  <div class="form_render_ss_v">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
     <%= render 'form', sharespace_venue: @sharespace_venue if user_signed_in? && current_user.can_update?(@sharespace_venue)  %>
   </div>
 </div>
 
 <!-- Hidden new sharespace render -->
-<div class="form_container new_ss new_ hide">
+<div class="form_container new_ss hide">
   <div class="form_render">
-    <div class="button_box"><p class="close_form close_add_image">&times;</p></div>
-    <%= render 'sharespaces/form', sharespace: Sharespace.new, sharespace_venue: @sharespace_venue if user_signed_in? && current_user.can_update?(@sharespace_venue)  %>
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= render 'sharespaces/form', sharespace_new: Sharespace.new, sharespace_venue: @sharespace_venue.id if user_signed_in? && current_user.can_update?(@sharespace_venue)  %>
   </div>
 </div>
 

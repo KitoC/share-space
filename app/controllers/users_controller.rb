@@ -11,8 +11,11 @@ class UsersController < ApplicationController
   end
 
   def home
-    @featured_ss = SharespaceVenue.order(overall_rating: :desc, created_at: :desc)
-    @addresses = Address.where(addressable_type: "SharespaceVenue")
+    @addresses = SharespaceVenue.last(5)
+    @featured_ss = []
+    @addresses.each do |ss|
+      @featured_ss.push(ss.address)
+    end
   end
 
   def profile
