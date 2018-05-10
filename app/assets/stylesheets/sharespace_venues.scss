@@ -1,7 +1,10 @@
 // Place all the styles related to the sharespace_venues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.bgimg
+{
+    background-image: image-url('default-image.png');
+}
 .listing_layout
 {
   display: grid;

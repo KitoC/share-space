@@ -3,9 +3,9 @@
     .bgimg
     {
       <% if @sharespace_venue.photos.count == 0 %>
-      background-image: image-url('/assets/default-image.png');
+        background-image: image-url('default-image.png');
       <% else %>
-      background-image: image-url('<%= profile_photo_display(@sharespace_venue, "url_only") %>');
+        background-image: url("<%= profile_photo_display(@sharespace_venue, 'url_only') %>");
       <% end %>
     }
 </style>
