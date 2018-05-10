@@ -24,15 +24,12 @@
         <% rating -= 1 %>
       <% end %>
 
-      <% until anti_rating == 0 %>
-        <span class='fa fa-star'></span>
-        <% anti_rating -= 1 %>
-      <% end %>
+
       <span class="rating_num"><%= listing.reviews.count %></span>
     <% end %>
     </li>
 
-    
+
   </ul>
 </div>
 <% end %>

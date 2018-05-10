@@ -9,6 +9,7 @@
     color: white;
     @include link($link_large);
   }
+
 }
 .landing_page
 {
@@ -66,8 +67,11 @@
   margin: $margin_small 0em;
   @include breakpoint($phone)
   {
-    width: 95vw;
+    width: 95%;
     height: 45px;
+    padding: $padding_medium $padding_medium;
+    background: $primary;
+    margin: 0;
   }
 }
 .search_bar

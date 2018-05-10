@@ -80,6 +80,10 @@
 .form_container
 {
   padding: 0 30%;
+  @include breakpoint($phone)
+  {
+    padding: 0 2.5%;
+  }
 }
 .form_render
 {
@@ -91,6 +95,10 @@
   top: 40%;
   width: 40%;
   box-sizing: border-box;
+  @include breakpoint($phone)
+  {
+    width: 95%;
+  }
 }
 .button_box
 {

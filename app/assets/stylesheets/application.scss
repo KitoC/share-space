@@ -157,6 +157,10 @@ a
   width: 100%;
   padding: 0 10%;
   box-sizing: border-box;
+  @include breakpoint($phone)
+  {
+    padding: 0 2.5%;
+  }
 }
 
 // Listings
@@ -164,16 +168,25 @@ h3
 {
   margin: 0.25em 0;
 }
+
 .tiles
 {
   width: 100%;
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  overflow: scroll;
   a
   {
     @include link($link_medium);
     color: black;
+  }
+  &::-webkit-scrollbar {
+      display: none;
+  }
+  @include breakpoint($phone)
+  {
+    flex-wrap: nowrap;
   }
 }
 

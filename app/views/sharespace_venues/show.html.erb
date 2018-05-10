@@ -18,15 +18,14 @@
 <main class="main_section">
 
   <div class="tool_bar">
-    <% if user_signed_in? %>
-      <%= link_to 'Add a sharespace to your venue!', new_sharespace_path(:params => {:id => @sharespace_venue}), class: "tools" if current_user.can_update?(@sharespace_venue) %>
-    <% end %>
-    <% if user_signed_in? %>
 
-      <p class="tools open_options">Add an image.</p>
-      <%= link_to 'Edit Address', edit_address_path(@sharespace_venue.address), class: "tools" if current_user.can_update?(@sharespace_venue) %>
+    <% if user_signed_in? && current_user.can_update?(@sharespace_venue) %>
 
-      <%= link_to 'Edit', edit_sharespace_venue_path(@sharespace_venue), class: "tools" if current_user.can_update?(@sharespace_venue) %>
+      <p class="tools open_new_ss">Add a sharespace to your venue!</p>
+      <p class="tools open_add_image">Add an image.</p>
+      <p class="tools open_edit_address">Edit Address</p>
+      <p class="tools open_edit_venue">Edit Share-Space</p>
+
     <% end %>
   </div>
 
@@ -124,36 +123,84 @@
 
 
 
-
-<div class="form_container hide">
-  <div class="form_render hide">
-    <div class="button_box"><p class="close_form close_options hide">&times;</p></div>
-    <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if current_user.can_update?(@sharespace_venue) %>
+<!-- Hidden image render -->
+<div class="form_container add_image hide">
+  <div class="form_render">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= render 'photos/form', photo: Photo.new, photoable_object: @sharespace_venue if user_signed_in? && current_user.can_update?(@sharespace_venue)  %>
   </div>
 </div>
 
-<div class="close_form close_options hide" >
+<!-- Hidden edit address render -->
+<div class="form_container edit_address hide">
+  <div class="form_render">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= render 'addresses/form', address: @sharespace_venue.address if user_signed_in? && current_user.can_update?(@sharespace_venue) %>
+  </div>
 </div>
-<div class="form_bg hide close_options">
+
+<!-- Hidden edit sharespace_venue render -->
+<div class="form_container edit_venue hide">
+  <div class="form_render">
+    <div class="button_box"><p class="close_form close_add_image">&times;</p></div>
+    <%= render 'form', sharespace_venue: @sharespace_venue if user_signed_in? && current_user.can_update?(@sharespace_venue)  %>
+  </div>
+</div>
+
+<!-- Hidden new sharespace render -->
+<div class="form_container new_ss new_ hide">
+  <div class="form_render">
+    <div class="button_box"><p class="close_form close_add_image">&times;</p></div>
+    <%= render 'sharespaces/form', sharespace: Sharespace.new, sharespace_venue: @sharespace_venue if user_signed_in? && current_user.can_update?(@sharespace_venue)  %>
+  </div>
+</div>
+
+
+
+<div class="form_bg hide close_box">
 </div>
 
 
 <script>
+// Closes all boxes
 $(document).ready(function(){
-  $(".open_options").click(function(){
-    $(".form_render").removeClass('hide')
-    $(".close_form").removeClass('hide')
-    $(".form_container").removeClass('hide')
-    $(".form_bg").removeClass('hide')
-  });
-});
-
-$(document).ready(function(){
-  $(".close_options").click(function(){
-    $(".form_render").addClass('hide')
-    $(".close_form").addClass('hide')
+  $(".close_box").click(function(){
     $(".form_container").addClass('hide')
     $(".form_bg").addClass('hide')
   });
 });
+
+// Image form render JS.
+$(document).ready(function(){
+  $(".open_add_image").click(function(){
+    $(".add_image").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+// Adress edit form render JS.
+$(document).ready(function(){
+  $(".open_edit_address").click(function(){
+    $(".edit_address").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+// Venue edit form render JS.
+$(document).ready(function(){
+  $(".open_edit_venue").click(function(){
+    $(".edit_venue").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+// New sharespace form render JS.
+$(document).ready(function(){
+  $(".open_new_ss").click(function(){
+    $(".new_ss").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+
 </script>

@@ -165,15 +165,6 @@ Configuration - you will not have an ENV file as this has been ignored through G
 
   ----------------
  ## 9. List of Tools Used
- 1. Github - Version control, user stories and to assign story points for project management.
- 2. [Draw](https://www.draw.io) - ERD tool
- 3. postgresql - Database
- 4. Heroku - Webhosting
- 5. Sendgrid - emails
- 6. Figma - wireframing
- 7. Google Maps - map locations
- 8. Peer code review ???
- 9. [Adobe - Color](https://color.adobe.com)
 
  Gems used
   1. Devise - authentication gem
@@ -183,6 +174,17 @@ Configuration - you will not have an ENV file as this has been ignored through G
   5. Stripe - payments
   6. dotenv-rails - environmental variables
   7. geocoder - longitude latitude geocoding
+
+
+ 1. Github - Version control, user stories and to assign story points for project management.
+ 2. [Draw](https://www.draw.io) - ERD tool
+ 3. postgresql - Database
+ 4. Heroku - Webhosting
+ 5. Sendgrid - emails
+ 6. Figma - wireframing
+ 7. Google Maps - map locations
+ 8. [Adobe - Color](https://color.adobe.com)
+ 9. ![Peer code-review](DOCS/code_review.jpg)
 
 
  ------------------
