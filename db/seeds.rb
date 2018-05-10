@@ -40,31 +40,18 @@ csv.each do |row|
   t.user_id = row['user_id']
   t.save
 
-  puts "success"
-
-end
-
-
-
-require 'csv'
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'photos.csv'))
-csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-csv.each do |row|
-  t = Photo.new
-  # MAKE SURE YOU PLACE THE ID HERE TOO
-
-  t.image = row['image']
-  t.photoable_type = "SharespaceVenue"
-  t.photoable_id = row['id']
   x = Address.where(addressable_type: "SharespaceVenue", addressable_id: row['id'])[0]
   x.address_line_one = row['street']
   x.state = row['state']
   x.city_suburb = row['city']
   x.save
-  t.save
-  puts "success"
+
+
+  puts " address success"
 
 end
+
+
 
 require 'csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'venues.csv'))
