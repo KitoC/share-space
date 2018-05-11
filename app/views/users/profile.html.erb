@@ -5,12 +5,32 @@
 
   <div class="profile_grid_top">
     <div class="profile_images">
+      <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+        <div class="rating_bar"><% 5.times do %><span class='fa fa-star checked_star'><% end %></span></div>
+
+      <div class="profile_image open_add_image open">
+        <%=  profile_photo_display(@user, "medium") %>
+      </div>
     </div>
 
     <div class="profile_overview">
+      <ul list-style: "none">
+      <li>Email: <%= @user.email %></li>
+      <li>DoB: <%= @user.dob %></li>
+      <li>Ph: <%= @user.phone_number %></li>
+      <li>Description: <%= @user.description %></li>
+      <li>Address: <%= @user.address.full_street_address %></li>
+
+      </ul>
+      <p class="open_edit_address open"> Edit address </p>
+      <p class="open_edit_profile open"> Edit Profile </p>
+
+
+
     </div>
 
     <div class="profile_projects">
+      <h3>Projects</h3>
     </div>
   </div>
 
@@ -18,30 +38,93 @@
 
   <div class="profile_grid_bottom">
     <div class="profile_reviews">
+      <h3>Reviews</h3>
+
     </div>
 
     <div class="profile_listings">
+      <h3>Sharespace venues</h3>
+
     </div>
   </div>
 
 </div>
 
 <div class = "profiles">
-<h1><%= @user.first_name %> <%= @user.last_name %><h1>
-<h2>Profile</h2>
-<div><%= profile_photo_display(@user,"profile_photo") %></div>
-<p><%= rating_average(@user) %></p>
-<ul list-style: "none">
-<li>Email: <%= @user.email %></li>
-<li>DoB: <%= @user.dob %></li>
-<li>Ph: <%= @user.phone_number %></li>
-<li>Description: <%= @user.description %></li>
-<li>Address: <%= @user.address.full_street_address %></li>
 
-</ul>
 
-<h3> Upload an awesome photo for your awesome life!</h3>
-<%= render 'photos/form', photo: Photo.new, photoable_object: @user if current_user.owner?(@user)  %>
-<%= link_to 'Edit Address', edit_address_path(@user.address) if current_user.owner?(@user) %>
-<%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" if current_user.owner?(@user) %>
+
+
+
 </div>
+
+<div class="form_container add_image hide">
+  <div class="form_render">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= render 'photos/form', photo: Photo.new, photoable_object: @user if user_signed_in? && current_user.owner?(@user)  %>
+  </div>
+</div>
+
+<!-- Hidden edit address render -->
+<div class="form_container edit_address hide">
+  <div class="form_render_address">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= link_to 'Edit Address', edit_address_path(@user.address) if user_signed_in? && current_user.owner?(@user) %>  </div>
+</div>
+
+<!-- Hidden edit sharespace_venue render -->
+<div class="form_container edit_profile hide">
+  <div class="form_render_ss_v">
+    <div class="button_box"><p class="close_form close_box">&times;</p></div>
+    <%= link_to 'Edit Profile', edit_user_registration_path, class: "nav-link" if user_signed_in? && current_user.owner?(@user) %>
+  </div>
+</div>
+
+
+
+
+<div class="form_bg hide close_box">
+</div>
+
+<script>
+// Closes all boxes
+$(document).ready(function(){
+  $(".close_box").click(function(){
+    $(".form_container").addClass('hide')
+    $(".form_bg").addClass('hide')
+  });
+});
+
+// Image form render JS.
+$(document).ready(function(){
+  $(".open_add_image").click(function(){
+    $(".add_image").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+
+// Adress edit form render JS.
+$(document).ready(function(){
+  $(".open_edit_address").click(function(){
+    $(".edit_address").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+// Venue edit form render JS.
+$(document).ready(function(){
+  $(".open_edit_profile").click(function(){
+    $(".edit_profile").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+
+// New sharespace form render JS.
+$(document).ready(function(){
+  $(".open_new_ss").click(function(){
+    $(".new_ss").removeClass('hide')
+    $(".form_bg").removeClass('hide')
+  });
+});
+</script>

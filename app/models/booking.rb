@@ -24,7 +24,7 @@ class Booking < ApplicationRecord
   end
 
   def set_reviewed_status
-    self.update(host_reviewed: false, user_reviewed: false)
+    self.update(host_reviewed: false, user_reviewed: false) if self != nil
   end
 
   def cost_days_math

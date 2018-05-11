@@ -1,14 +1,7 @@
-<!-- <p id="notice"><%= notice %></p> -->
-<style type="text/css">
-    .bgimg
-    {
-      <% if @sharespace_venue.photos.count == 0 %>
-        background-image: url("<%= profile_photo_display(@sharespace_venue, 'url_only') %>");
-      <% end %>
-    }
-</style>
 
-<div class="main_image bgimg" >
+
+<div class="main_image" >
+  <%=  profile_photo_display(@sharespace_venue, "large") %>
 </div>
 
 

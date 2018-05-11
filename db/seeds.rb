@@ -46,6 +46,12 @@ csv.each do |row|
   x.city_suburb = row['city']
   x.save
 
+  ss = Sharespace.new
+  ss.sharespace_venue_id = rand(1...20)
+  ss.space_type = "Desk"
+  ss.cost = rand(20.00...90.00)
+  ss.save
+
 
   puts " address success"
 
@@ -54,19 +60,24 @@ end
 
 
 require 'csv'
-csv_text = File.read(Rails.root.join('lib', 'seeds', 'venues.csv'))
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'Reviews.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 csv.each do |row|
-  t = Review.new
 
   # MAKE SURE YOU PLACE THE ID HERE TOO
 
 
+  x = Booking.new(user_id: rand(1...20), sharespace_id: rand(1...20), date_from: SharespaceVenue.first.created_at, date_to: SharespaceVenue.first.created_at, paid: true)
+  x.save
+  puts "#{x}"
 
-  t.rating = row['rating']
+  t = Review.new
+  t.rating = rand(1...5)
   t.review = row['review']
-  t.reviewable_id = row['reviewable_id']
+  t.reviewable_id = rand(1...20)
   t.reviewable_type = "SharespaceVenue"
+  t.reference_id = rand(1...20)
+  t.reference_type = "Booking"
   t.save
   puts "success"
 

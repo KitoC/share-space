@@ -16,6 +16,11 @@
   height: 700px;
   grid-template-columns: 70% 30%;
   grid-template-rows: 40% 60%;
+
+}
+.open
+{
+  cursor: pointer;
 }
 .profile_images
 {
@@ -23,22 +28,54 @@
   grid-row: 1/2;
   background-color: $primary;
   @include div_style(0.5rem);
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  h2
+  {
+    margin: none;
+  }
+  padding: 1em;
+}
+.profile_image
+{
+  border-radius: 50%;
+  border: 5px solid white;
+  @include width-height(200px, 200px);
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  left: 5%;
+  bottom: -20%;
+  overflow: hidden;
+}
+.profile_image img
+{
+  height: 100%;
+}
+.rating_bar
+{
+  background-color: white;
+  width: 100%;
+  text-align: center;
 }
 .profile_overview
 {
   grid-column: 1/2;
   grid-row: 2/3;
-  background-color: $primary;
+  background-color: white;
   @include div_style(0.5rem);
-
+  padding: 1em;
 }
 .profile_projects
 {
   grid-column: 2/3;
   grid-row: 1/3;
-  background-color: $primary;
+  background-color: white;
   @include div_style(0.5rem);
-
+  padding: 1em;
 }
 // Bottom grid box
 .profile_grid_bottom
@@ -50,12 +87,14 @@
 .profile_reviews
 {
   grid-column: 1/2;
-  background-color: $primary;
+  background-color: white;
   @include div_style(0.5rem);
+  padding: 1em;
 }
 .profile_listings
 {
   grid-column: 2/3;
-  background-color: $primary;
+  background-color: white;
   @include div_style(0.5rem);
+  padding: 1em;
 }

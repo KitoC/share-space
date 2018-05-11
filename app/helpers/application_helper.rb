@@ -10,9 +10,9 @@ module ApplicationHelper
         obj.photos.first.image_url
       end
     elsif  obj.profile_photo != nil
-      image_tag Photo.find(obj.profile_photo).image_url(photo_class)
+      image_tag Photo.find(obj.profile_photo).image_url(:large)
     else
-      image_tag obj.photos.first.image_url(photo_class)
+      image_tag obj.photos.first.image_url(:large)
     end
   end
 
@@ -65,7 +65,7 @@ module ApplicationHelper
       if obj.sharespaces.order(cost: :desc).first.cost == 0.0 or nil
         "Free"
       else
-        "From $#{obj.sharespaces.order(cost: :desc).first.cost}"
+        "From $#{obj.sharespaces.order(cost: :desc).first.cost.round(2)}"
       end
 
     else

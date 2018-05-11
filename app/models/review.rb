@@ -11,7 +11,7 @@ class Review < ApplicationRecord
   end
 
   def set_reviewed_status
-    if self.reference_type == 'Booking'
+    if self.reference_type == 'Booking' && self.reference != nil
       self.reference.update(host_reviewed: true) if self.reviewable_type == 'SharespaceVenue'
       self.reference.update(user_reviewed: true) if self.reviewable_type == 'User'
     end
