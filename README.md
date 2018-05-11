@@ -1,5 +1,11 @@
 # README
 
+## LINKS TO APP
+
+
+1. [Heroku_link](https://stark-anchorage-29476.herokuapp.com/)
+2. [Github](https://github.com/KitoC/share-space)
+
 ## Checklist
 * README
 * ~~Problem Definition~~  
@@ -96,6 +102,7 @@ Configuration - you will not have an ENV file as this has been ignored through G
 3. Run **rails db:create**(To build the database.) **rails db:migrate**(TO generate the tables) in terminal.
 4. Run **db:seed** to populate the website.
 5. Run **rake geocode:all CLASS=Address** in CLI until there are no API query failures.
+6. Run **rails c** and type in **Booking.all.update(paid:true)** and enter
 5. Create a .env file in the root of the directory, then add your own ENV variables :
    - `STRIPE_PUBLISHABLE_KEY=XXXX`
    - `STRIPE_SECRET_KEY=XXXX`
